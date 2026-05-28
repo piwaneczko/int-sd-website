@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardHeader, CardContent } from '../ui/card'
-import { Cpu, Activity, Wifi, Terminal, Code, FileText, Layers, Zap, BarChart3, Shield } from 'lucide-react'
+import { Cpu, Activity, Wifi, Terminal, Code, FileText, Layers, Zap, BarChart3, Shield, File } from 'lucide-react'
 
 const services = [
   {
@@ -10,9 +10,9 @@ const services = [
     features: ["STM32", "nRF52", "Low-power design", "RTOS"]
   },
   {
-    icon: <Linux size={32} />,
+    icon: <File size={32} />,
     title: "Linux & Yocto",
-    description: "Tworzenie customowych dystrybucji Terminal, moduły jądra, systemy embedded na bazie Linuxa z Yocto.",
+    description: "Tworzenie customowych dystrybucji Linux, moduły jądra, systemy embedded na bazie Linuxa z Yocto.",
     features: ["Custom Linux", "Yocto/Buildroot", "Kernel modules", "Systemd"]
   },
   {
@@ -30,7 +30,7 @@ const services = [
   {
     icon: <Code size={32} />,
     title: "Firmware",
-    description: "Niskopoziomowy firmware dla urządzeń specjalistycznych. C/C++, assembly,调试, testy jednostkowe.",
+    description: "Niskopoziomowy firmware dla urządzeń specjalistycznych. C/C++, assembly, debugowanie, testy jednostkowe.",
     features: ["C/C++", "Assembly", "Debugging", "Unit tests"]
   },
   {

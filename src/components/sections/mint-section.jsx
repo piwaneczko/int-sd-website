@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button } from '../ui/button'
-import { ArrowRight, Cpu, Activity, BarChart3, Layers, Code, Shield, Clock, FileText } from 'lucide-react'
+import { ArrowRight, Cpu, Activity, BarChart3, Layers, Code, Shield, Clock, FileText, Wifi } from 'lucide-react'
 
 export function MINTSection() {
   return (
@@ -34,9 +34,9 @@ export function MINTSection() {
                 Architektura Systemu
               </h3>
               <p className="text-deep-300 leading-relaxed">
-                MINT to kompletne rozwiązanie inertial navigation wykorzystujące 
-                zaawansowane algorytmy kalman filter i sensor fusion. System 
-                integruje dane z akcelerometrów, gироскопów i magnetometrów 
+                MINT to kompletne rozwiązanie inertial navigation wykorzystujące
+                zaawansowane algorytmy kalman filter i sensor fusion. System
+                integruje dane z akcelerometrów, żyroskopów i magnetometrów
                 dla precyzyjnego wyznaczania orientacji i ruchu.
               </p>
             </div>
@@ -126,7 +126,7 @@ export function MINTSection() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { icon: <Cpu />, name: "STM32", desc: "MCU platform" },
-              { icon: <C />, name: "C/C++", desc: "Embedded code" },
+              { icon: <Code />, name: "C/C++", desc: "Embedded code" },
               { icon: <Layers />, name: "FreeRTOS", desc: "Real-time OS" },
               { icon: <Shield />, name: "IMU", desc: "Sensor hardware" },
               { icon: <BarChart3 />, name: "Kalman", desc: "Filter algorithm" },

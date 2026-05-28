@@ -11,10 +11,6 @@
     --deep-700: #1a1a1a;
   }
   
-  * {
-    border: 1px solid var(--border, #e5e7eb);
-  }
-  
   body {
     @apply bg-deep-900 text-white;
     font-feature-settings: "ss01", "ss02", "cv01", "cv02", "cv03";

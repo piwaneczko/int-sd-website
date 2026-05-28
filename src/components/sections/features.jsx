@@ -1,6 +1,6 @@
 import React from 'react'
 import { Card, CardHeader, CardContent } from '../ui/card'
-import { Cpu, Activity, Navigation, Wifi, Terminal, FileText, GitBranch, Zap } from 'lucide-react'
+import { Cpu, Activity, Navigation, Wifi, Terminal, FileText, Binary, Server } from 'lucide-react'
 
 const features = [
   {
@@ -16,19 +16,19 @@ const features = [
     color: "text-cyan-400"
   },
   {
-    icon: <Linux size={32} />,
+    icon: <Terminal size={32} />,
     title: "Linux & Yocto",
     description: "Custom Linux distributions, kernel modules i systemy embedded na bazie Linuxa.",
     color: "text-green-400"
   },
   {
-    icon: <GitBranch size={32} />,
+    icon: <Binary size={32} />,
     title: "Firmware Development",
     description: "Low-level firmware dla urządzeń IoT i specjalistycznych urządzeń elektronicznych.",
     color: "text-purple-400"
   },
   {
-    icon: <Zap size={32} />,
+    icon: <Server size={32} />,
     title: "AI & Local LLM",
     description: "Integracja AI i modeli LLM na urządzeniach embedded oraz w aplikacjach webowych.",
     color: "text-yellow-400"
