@@ -70,7 +70,7 @@ export const translations = {
       placeholderName: 'Jan Kowalski', placeholderSubject: 'Propozycja współpracy', placeholderMessage: 'Opisz swój projekt...',
       btnSend: 'Wyślij wiadomość',
       infoTitle: 'Dane kontaktowe',
-      labelPhone: 'Telefon', labelAddress: 'Adres', address: 'Warszawa / Poznań, Polska',
+      labelPhone: 'Telefon', labelAddress: 'Adres', address: 'Kędzierzyn-Koźle / Gliwice, Polska',
       profilesTitle: 'Profile',
     },
     footer: {
@@ -153,7 +153,7 @@ export const translations = {
       placeholderName: 'John Doe', placeholderSubject: 'Collaboration proposal', placeholderMessage: 'Describe your project...',
       btnSend: 'Send message',
       infoTitle: 'Contact details',
-      labelPhone: 'Phone', labelAddress: 'Address', address: 'Warsaw / Poznań, Poland',
+      labelPhone: 'Phone', labelAddress: 'Address', address: 'Kędzierzyn-Koźle / Gliwice, Poland',
       profilesTitle: 'Profiles',
     },
     footer: {
