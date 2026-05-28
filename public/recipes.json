@@ -1,0 +1,170 @@
+{
+  "categories": ["wszystkie", "śniadania", "obiady", "coś słodkiego", "święta"],
+  "recipes": [
+    {
+      "id": 1,
+      "title": "Kapusta zasmażana",
+      "category": "obiady",
+      "time": "40 minut",
+      "serving": "na ciepło",
+      "source": "https://www.olgasmile.com/mloda-kapusta-zasmazana.html",
+      "sourceLabel": "Olga smile",
+      "image": "https://cdn.aniagotuje.com/pictures/articles/2019/10/1401706-v-1080x1080.jpg",
+      "ingredients": [
+        { "name": "młoda kapusta", "amount": "1 sztuka" },
+        { "name": "pęczek koperku", "amount": "1 sztuka" },
+        { "name": "masło", "amount": "3 łyżki" },
+        { "name": "woda", "amount": "pół litra" },
+        { "name": "mąka", "amount": "łyżeczka" }
+      ],
+      "steps": []
+    },
+    {
+      "id": 2,
+      "title": "Zupa botwinka",
+      "category": "obiady",
+      "time": "1 godzina",
+      "serving": "na ciepło",
+      "source": "https://aniagotuje.pl/przepis/botwinka",
+      "sourceLabel": "Ania gotuje",
+      "image": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/zupa_botwinkowa_z_ziemniakami_wedzonka_00.jpg",
+      "ingredients": [
+        { "name": "botwinka", "amount": "2 pęczki" },
+        { "name": "ziemniaki", "amount": "4 sztuki" },
+        { "name": "marchewka", "amount": "1 sztuka" },
+        { "name": "bulion", "amount": "2 litry" },
+        { "name": "koper", "amount": "1 pęczek" }
+      ],
+      "steps": []
+    },
+    {
+      "id": 3,
+      "title": "Ciasto z truskawkami",
+      "category": "coś słodkiego",
+      "time": "2 godziny",
+      "serving": "na zimno",
+      "source": "https://www.kwestiasmaku.com/przepis/ciasto-z-truskawkami",
+      "sourceLabel": "Kwestia smaku",
+      "image": "https://preheatto350.com/wp-content/uploads/2014/08/Strawberry-Shortcake-680x693.jpg",
+      "ingredients": [
+        { "name": "jajka", "amount": "4 sztuki" },
+        { "name": "cukier", "amount": "1 szklanka" },
+        { "name": "masło roztopione", "amount": "pół szklanki" },
+        { "name": "mąka pszenna", "amount": "1,5 szklanki" },
+        { "name": "proszek do pieczenia", "amount": "1 łyżeczka" },
+        { "name": "soda oczyszczona", "amount": "pół łyżeczki" },
+        { "name": "truskawki", "amount": "0,5 kg" }
+      ],
+      "steps": []
+    },
+    {
+      "id": 4,
+      "title": "Naleśniki",
+      "category": "śniadania",
+      "time": "30 minut",
+      "serving": "na ciepło",
+      "source": "https://zyciezaczynasiewkuchni.blogspot.com/2016/10/nalesniki-idealne-lubella.html",
+      "sourceLabel": "Lubella",
+      "image": "https://d3iamf8ydd24h9.cloudfront.net/pictures/articles/2019/08/1066539-v-1080x1080.jpg",
+      "ingredients": [
+        { "name": "woda gazowana", "amount": "300 ml (1 szklanka)" },
+        { "name": "mleko", "amount": "300 ml (1 szklanka)" },
+        { "name": "mąka 450 Lubella", "amount": "1,5 szklanki" },
+        { "name": "jajka", "amount": "2 sztuki" },
+        { "name": "sól", "amount": "szczypta" },
+        { "name": "olej", "amount": "1 łyżka" }
+      ],
+      "steps": [
+        "Obsmażać 1,5 minuty z każdej strony."
+      ]
+    },
+    {
+      "id": 5,
+      "title": "Ciasto drożdżowe Babci Marysi",
+      "category": "coś słodkiego",
+      "time": "3 godziny",
+      "serving": "na ciepło lub zimno",
+      "source": null,
+      "sourceLabel": "Przepis Babci Marysi",
+      "image": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/ciasto_drozdzowe2.jpg",
+      "ingredients": [
+        { "name": "mąka wrocławska", "amount": "1 kg" },
+        { "name": "jajka", "amount": "4–5 sztuk" },
+        { "name": "rodzynki", "amount": "pół paczki" },
+        { "name": "śliwki lub jabłka (na wierzch)", "amount": "kilka sztuk" },
+        { "name": "drożdże", "amount": "60 g" },
+        { "name": "mleko letnie (nie gorące!)", "amount": "1,5 szklanki" },
+        { "name": "cukier", "amount": "1 szklanka" },
+        { "name": "margaryna", "amount": "150 g" },
+        { "name": "olej", "amount": "1/3 szklanki" },
+        { "name": "sól", "amount": "3 szczypty" }
+      ],
+      "steps": [
+        "Zaczyn: drożdże do mleka (pół szklanki), łyżka cukru, rozmieszać. Dodać 4 łyżki mąki. Przysypać mąką i czekać aż podrośnie.",
+        "Margarynę roztopić. Mąkę przesiać do miski. Jajka zmiksować z resztą cukru i odrobiną mleka. Wlać do mąki z drożdżami. Dolać mleka jeśli zbyt gęste. Dodać roztopioną margarynę i olej.",
+        "Wyrabiać aż ciasto będzie świecące i puszcza bąbelki. Na końcu dodać rodzynki posypane mąką. Czekać aż urośnie.",
+        "Blaszkę nasmarować margaryną. Rozłożyć ciasto, na górę owoce (jabłka lub śliwki). Piec 45 min w 150°C termoobieg."
+      ]
+    },
+    {
+      "id": 6,
+      "title": "Mięciutkie pierniczki korzenne",
+      "category": "święta",
+      "time": "2 godziny",
+      "serving": "na zimno",
+      "source": "https://kukbuk.pl/przepisy/pierniczki-korzenne/",
+      "sourceLabel": "kukbuk",
+      "image": "https://cdn.galleries.smcloud.net/t/galleries/gf-5xgC-sBPA-h6KB_piernikowe-ludziki-664x442-nocrop.jpg",
+      "ingredients": [
+        { "name": "mąka pszenna", "amount": "450 g" },
+        { "name": "miód płynny", "amount": "150 g" },
+        { "name": "cukier trzcinowy", "amount": "50 g" },
+        { "name": "masło", "amount": "110 g" },
+        { "name": "jajko (zerówka)", "amount": "1 sztuka" },
+        { "name": "proszek do pieczenia", "amount": "1 łyżeczka" },
+        { "name": "soda oczyszczona", "amount": "1 łyżeczka" },
+        { "name": "kakao", "amount": "2 łyżeczki" },
+        { "name": "cynamon", "amount": "1 łyżka" },
+        { "name": "imbir mielony", "amount": "½ łyżeczki" },
+        { "name": "goździki mielone", "amount": "½ łyżeczki" },
+        { "name": "gałka muszkatołowa", "amount": "½ łyżeczki" },
+        { "name": "pomarańcza (skórka)", "amount": "1 sztuka" },
+        { "name": "ekstrakt waniliowy", "amount": "2 łyżeczki" }
+      ],
+      "steps": [
+        "Masło, miód i cukier podgrzać na małym ogniu do rozpuszczenia. Wystudzić.",
+        "Mąkę przesiać z proszkiem, sodą, kakao i przyprawą. Wlać przestudzone masło z miodem. Wbić jajko, dodać ekstrakt waniliowy i skórkę pomarańczową.",
+        "Wyrabiać ręcznie ~10 minut lub mikserem. Zawinąć w folię i chłodzić 30 minut w lodówce.",
+        "Piec w 180°C przez 9–11 minut. Po wystudzeniu lukrować lub dekorować czekoladą."
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Chlebek na zakwasie Pani Beaty",
+      "category": "śniadania",
+      "time": "12+ godzin",
+      "serving": "na ciepło lub zimno",
+      "source": null,
+      "sourceLabel": "Przepis Pani Beaty",
+      "image": "http://1.bp.blogspot.com/-2GfpsSORPss/VQgU-Aw9WqI/AAAAAAAAG4o/qS1ZwVASHSc/s1600/3.png",
+      "ingredients": [
+        { "name": "mąka wrocławska", "amount": "1 kg" },
+        { "name": "sól", "amount": "3 łyżeczki" },
+        { "name": "woda", "amount": "3 szklanki" },
+        { "name": "otręby żytnie", "amount": "¾ szklanki" },
+        { "name": "siemię lniane", "amount": "¾ szklanki" },
+        { "name": "słonecznik", "amount": "½ szklanki" },
+        { "name": "czarnuszka", "amount": "¼ szklanki" },
+        { "name": "drożdże", "amount": "⅓ kostki" }
+      ],
+      "steps": [
+        "Zakwas: 2 łyżki mąki żytniej + 2 łyżki ciepłej wody w wyparzonym słoiku. Codziennie mieszać i dokarmić (2 łyżki mąki + 2 łyżki wody) przez 7–10 dni aż pojawią się bąbelki.",
+        "Zaczyn: 1 garść zakwasu + 1 szklanka mąki żytniej + 1 szklanka wody. Odstawić na 10–12 godzin w kuchni pod przykryciem.",
+        "Do zaczynu dodać wodę, ziarna, na końcu przesianą mąkę. Odłożyć 1 garść (bułeczkę) do lodówki na następny raz.",
+        "Dodać drożdże rozpuszczone w ciepłej wodzie. Mieszać 5–10 minut. Odstawić do wyrośnięcia na 2–3 godziny.",
+        "Przełożyć do dwóch foremek, odstawić na 1 godzinę. Piec w 150–170°C, po 15 min zwiększyć do 200°C i piec jeszcze 50 minut.",
+        "Wyjąć z foremek i dopiec 10 minut do góry nogami. Gotowy chleb 'puka od spodu'."
+      ]
+    }
+  ]
+}

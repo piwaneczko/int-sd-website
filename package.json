@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "deploy": "./deploy.sh",
     "deploy:win": "./deploy.ps1",
-    "deploy:cmd": "./deploy.cmd"
+    "deploy:cmd": "./deploy.cmd",
+    "deploy:recipes": "rsync -avz public/recipes.json synology:/volume1/web/recipes.json"
   },
   "dependencies": {
     "clsx": "^2.0.0",

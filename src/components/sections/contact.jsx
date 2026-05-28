@@ -72,17 +72,17 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-deep-400">Email</div>
-                  <div className="text-white font-medium">contact@int-sd.net</div>
+                  <div className="text-white font-medium">p.iwaneczko@gmail.com</div>
                 </div>
               </Card>
-              
+
               <Card className="flex items-center gap-4 p-6">
                 <div className="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary">
                   <Phone size={20} />
                 </div>
                 <div>
                   <div className="text-sm text-deep-400">Telefon</div>
-                  <div className="text-white font-medium">+48 123 456 789</div>
+                  <div className="text-white font-medium">+48 503 124 502</div>
                 </div>
               </Card>
             </div>
@@ -95,14 +95,14 @@ export function Contact() {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-deep-400 mb-2">Email</label>
-                  <a href="mailto:contact@int-sd.net" className="text-white text-lg hover:text-primary transition-colors">
-                    contact@int-sd.net
+                  <a href="mailto:p.iwaneczko@gmail.com" className="text-white text-lg hover:text-primary transition-colors">
+                    p.iwaneczko@gmail.com
                   </a>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-deep-400 mb-2">Telefon</label>
-                  <a href="tel:+48123456789" className="text-white text-lg hover:text-primary transition-colors">
-                    +48 123 456 789
+                  <a href="tel:+48503124502" className="text-white text-lg hover:text-primary transition-colors">
+                    +48 503 124 502
                   </a>
                 </div>
                 <div>

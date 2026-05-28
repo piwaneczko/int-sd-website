@@ -7,7 +7,6 @@ const navLinks = [
   { name: 'MINT', path: '/mint' },
   { name: 'O mnie', path: '/about' },
   { name: 'Usługi', path: '/services' },
-  { name: 'Projekty', path: '/portfolio' },
   { name: 'Kontakt', path: '/contact' },
 ]
 

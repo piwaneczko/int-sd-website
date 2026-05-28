@@ -6,7 +6,6 @@ const footerLinks = {
   company: [
     { name: 'O mnie', path: '/about' },
     { name: 'Usługi', path: '/services' },
-    { name: 'Projekty', path: '/portfolio' },
     { name: 'Kontakt', path: '/contact' },
   ],
   services: [
@@ -17,7 +16,7 @@ const footerLinks = {
   ],
   resources: [
     { name: 'MINT Project', path: '/mint' },
-    { name: 'Cookbook', path: '/cookbook', isExternal: true },
+    { name: 'Cookbook', path: '/cookbook' },
   ],
 }
 

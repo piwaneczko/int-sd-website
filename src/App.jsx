@@ -2,7 +2,7 @@ import React from 'react'
 import { Routes, Route, BrowserRouter } from 'react-router-dom'
 import { Navbar } from './components/ui/navbar'
 import { Footer } from './components/ui/footer'
-import { HiddenCookbook } from './components/sections/hidden-cookbook'
+import { ScrollToTop } from './components/ScrollToTop'
 import { Home } from './pages/Home'
 import { MINTPage } from './pages/MINT'
 import { AboutPage } from './pages/About'
@@ -15,6 +15,7 @@ import './styles/tailwind.css'
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <div className="min-h-screen bg-deep-900 text-white font-sans">
         <Navbar />
         
@@ -31,7 +32,6 @@ function App() {
         </main>
         
         <Footer />
-        <HiddenCookbook />
       </div>
     </BrowserRouter>
   )

@@ -1,8 +1,10 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Button } from '../ui/button'
 import { ArrowRight, Cpu, Activity, Navigation, Wifi } from 'lucide-react'
 
 export function Hero() {
+  const navigate = useNavigate()
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background gradient */}
@@ -34,18 +36,18 @@ export function Hero() {
             </p>
             
             <div className="flex flex-wrap gap-4">
-              <Button variant="primary" size="lg">
+              <Button variant="primary" size="lg" onClick={() => navigate('/about')}>
                 O mnie
                 <ArrowRight className="ml-2" size={20} />
               </Button>
-              <Button variant="outline" size="lg">
-                Projekty
+              <Button variant="outline" size="lg" onClick={() => navigate('/contact')}>
+                Kontakt
               </Button>
             </div>
 
             <div className="pt-8 grid grid-cols-3 gap-8 border-t border-deep-800/50">
               <div>
-                <div className="text-3xl font-bold text-white">5+</div>
+                <div className="text-3xl font-bold text-white">15+</div>
                 <div className="text-sm text-deep-400">Lat doświadczenia</div>
               </div>
               <div>

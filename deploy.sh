@@ -32,11 +32,9 @@ log_warning() {
     echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] WARNING:${NC} $1"
 }
 
-# Check if build exists
-if [ ! -d "$BUILD_DIR" ]; then
-    log "Build directory not found. Building project..."
-    npm run build
-fi
+# Always build before deploy
+log "Building project..."
+npm run build
 
 # Check if rsync is available
 if ! command -v rsync &> /dev/null; then
