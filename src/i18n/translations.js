@@ -76,6 +76,9 @@ export const translations = {
     footer: {
       desc: 'Specjalizacja w systemach embedded, nawigacji inercialnej i inteligentnych rozwiązaniach.',
       company: 'Menu', services: 'Usługi', resources: 'Zasoby',
+      rights: 'Wszelkie prawa zastrzeżone.',
+      privacy: 'Polityka prywatności',
+      terms: 'Regulamin',
     },
   },
 
@@ -156,6 +159,9 @@ export const translations = {
     footer: {
       desc: 'Specializing in embedded systems, inertial navigation and intelligent solutions.',
       company: 'Menu', services: 'Services', resources: 'Resources',
+      rights: 'All rights reserved.',
+      privacy: 'Privacy policy',
+      terms: 'Terms',
     },
   },
 }
