@@ -5,9 +5,9 @@
 ![Vite](https://img.shields.io/badge/vite-%5E5.0.0-blue.svg)
 ![TailwindCSS](https://img.shields.io/badge/tailwind-%5E3.4.0-blue.svg)
 
-## 📖 O projekcie
+## 📖 About Project
 
-To jest nowoczesna strona internetowa dla **Int Software Development** - Paweł Iwaneczko, przedstawiająca działalność w dziedzinie:
+This is a modern website for **Int Software Development** - Paweł Iwaneczko, showcasing expertise in:
 - 💻 Software Development
 - 🔧 Embedded Systems
 - 🧭 Inertial Navigation (MINT)
@@ -15,14 +15,22 @@ To jest nowoczesna strona internetowa dla **Int Software Development** - Paweł 
 - 🐧 Linux & System Programming
 - 🤖 AI & Local LLM
 
-**Domena:** https://www.int-sd.net
+**Domain:** https://www.int-sd.net
+
+## 📝 Note on "Cookbook"
+
+The **Cookbook** section on the website is actually **"Recipes of Generations"** - a virtual collection of family and friend recipes (breakfasts, lunches, dinners, sweets, holidays). It is NOT a "Developer Cookbook" with technical guides.
+
+Access via:
+- Footer link: "Resources → Cookbook"
+- URL: `https://www.int-sd.net/cookbook`
 
 ---
 
-## 🛠️ Technologie
+## 🛠️ Technologies
 
-| Kategoria | Technologia |
-|-----------|-------------|
+| Category | Technology |
+|----------|------------|
 | Framework | React 18 |
 | Build Tool | Vite 5 |
 | Styling | Tailwind CSS 3 |
@@ -33,71 +41,71 @@ To jest nowoczesna strona internetowa dla **Int Software Development** - Paweł 
 
 ---
 
-## 📁 Struktura projektu
+## 📁 Project Structure
 
 ```
 src/
-├── assets/           # Zasoby (obrazy, ikony)
-├── components/         # Komponenty React
-│   ├── ui/           # UI komponenty (Button, Card, etc.)
-│   ├── layout/       # Układ strony
-│   └── sections/     # Sekcje stron
-├── pages/            # Komponenty stron
-├── styles/           # Style CSS
+├── assets/           # Resources (images, icons)
+├── components/         # React components
+│   ├── ui/           # UI components (Button, Card, etc.)
+│   ├── layout/       # Page layout
+│   └── sections/     # Page sections
+├── pages/            # Page components
+├── styles/           # CSS styles
 └── utils/            # Utility functions
 ```
 
 ---
 
-## 🚀 Instalacja i uruchomienie
+## 🚀 Installation & Setup
 
-### Wymagania
+### Requirements
 - Node.js (LTS)
-- npm (lub pnpm/yarn)
-- rsync (dla deployu)
+- npm (or pnpm/yarn)
+- rsync (for deployment)
 
-### Krok po kroku
+### Step by Step
 
 ```bash
-# Klonowanie repozytorium
+# Clone repository
 git clone https://github.com/piwaneczko/int-sd-website.git
 cd int-sd-website
 
-# Instalacja zależności
+# Install dependencies
 npm install
 
-# Uruchomienie dev servera
+# Start dev server
 npm run dev
 
-# Budowanie dla produkcji
+# Build for production
 npm run build
 
-# Podgląd buildu
+# Preview build
 npm run preview
 ```
 
 ---
 
-## 📄 Skrypty npm
+## 📄 npm Scripts
 
-| Skrypt | Opis |
-|--------|------|
-| `npm run dev` | Uruchomienie dev servera na http://localhost:3000 |
-| `npm run build` | Budowanie plików do katalogu `/dist` |
-| `npm run preview` | Podgląd wybuildowanej strony |
-| `npm run deploy` | Deploy na Synology via SSH (Linux/Mac) |
-| `npm run deploy:win` | Deploy na Synology via SSH (Windows) |
+| Script | Description |
+|--------|-------------|
+| `npm run dev` | Start dev server on http://localhost:3000 |
+| `npm run build` | Build files to `/dist` directory |
+| `npm run preview` | Preview built website |
+| `npm run deploy` | Deploy to Synology via SSH (Linux/Mac) |
+| `npm run deploy:win` | Deploy to Synology via SSH (Windows) |
 
 ---
 
 ## 🌐 Deployment
 
-### Wymagania
-1. Dostęp do serwera Synology przez SSH
-2. Zainstalowany `rsync`
+### Requirements
+1. SSH access to Synology server
+2. `rsync` installed
 
-### Konfiguracja
-Dodaj wpis do `~/.ssh/config`:
+### Configuration
+Add entry to `~/.ssh/config`:
 ```
 Host synology
     HostName your-synology-ip-or-domain
@@ -105,7 +113,7 @@ Host synology
     Port 22
 ```
 
-### Uruchomienie
+### Run
 ```bash
 # Linux/Mac
 npm run deploy
@@ -114,35 +122,35 @@ npm run deploy
 npm run deploy:win
 ```
 
-Skrypt automatycznie:
-- buduje projekt (jeśli nie był)
-- tworzy katalog docelowy
-- kopiuje pliki przez rsync
-- zapisuje log do `deploy.log`
+Script automatically:
+- builds the project (if not built)
+- creates destination directory
+- copies files via rsync
+- saves log to `deploy.log`
 
 ---
 
-## 🌐 Routowanie
+## 🌐 Routing
 
-| URL | Strona |
-|-----|--------|
+| URL | Page |
+|-----|------|
 | `/` | Home |
 | `/mint` | MINT - Inertial Navigation |
-| `/about` | O mnie |
-| `/services` | Usługi |
-| `/portfolio` | Projekty |
-| `/contact` | Kontakt |
-| `/cookbook` | Developer Cookbook (ukryta) |
+| `/about` | About Me |
+| `/services` | Services |
+| `/portfolio` | Projects |
+| `/contact` | Contact |
+| `/cookbook` | Recipes of Generations (family recipes) |
 
 ---
 
-## 🎨 Kolorystyka (Tailwind)
+## 🎨 Color Palette (Tailwind)
 
 ```javascript
 colors: {
   primary: '#0ea5e9',    // Cyan/Blue
   deep: {
-    900: '#0a0a0a',     // Ciemne tło
+    900: '#0a0a0a',     // Dark background
     800: '#111111',
     700: '#1a1a1a',
   },
@@ -154,45 +162,59 @@ colors: {
 
 ---
 
-## 📦 Wydajność
+## 📦 Performance
 
-| Plik | Rozmiar | Gzip |
-|------|---------|------|
+| File | Size | Gzip |
+|------|------|------|
 | index.html | 0.97 kB | 0.55 kB |
 | styles.css | 23.24 kB | 4.77 kB |
 | main.js | 241.50 kB | 74.40 kB |
 
 ---
 
-## 🔐 Hidden Cookbook
+## 📖 Cookbook (Recipes)
 
-Sekcja **Developer Cookbook** jest ukryta i dostępna poprzez:
-- Ikona terminala w stopce
-- LUB: `https://www.int-sd.net/cookbook`
+The **Cookbook** (Recipes of Generations) section contains family recipes:
 
-Zawiera przewodniki techniczne:
-- STM32 Embedded Guide
-- Linux Kernel Modules
-- Yocto Build System
-- CMake Cookbook
-- Qt/QML Tutorials
-- Local LLM Deployment
+| Category | Description |
+|----------|-------------|
+| 🥞 Breakfast | Morning dishes |
+| 🍽️ Lunch | Main meal |
+| 🍲 Dinner | Evening dishes |
+| 🍰 Sweets | Desserts and baked goods |
+| 🎂 Holidays | Holiday recipes |
 
----
+**Availability:**
+- Footer link: **Resources → Cookbook**
+- Direct URL: `/cookbook`
 
-## 📝 Notatki
-
-- Projekt nie używa SSR (static site)
-- Gotowe do hostowania na Netlify/Vercel/GitHub Pages
-- CSS buildowany przez Tailwind JIT
-- Komponenty zbudowane z myślą o modularności i ponownym użyciu
+**Tech Stack:**
+- React + Tailwind CSS
+- Category filtering
+- Expandable recipe cards
 
 ---
 
-## 📄 Licencja
+## 📝 Notes
 
-MIT License - patrz plik `LICENSE` lub `LICENSE.md`
+- Project does not use SSR (static site)
+- Ready for hosting on Netlify/Vercel/GitHub Pages
+- CSS built by Tailwind JIT
+- Components built with modularity and reuse in mind
+
+---
+
+## 📄 License
+
+MIT License - see `LICENSE` or `LICENSE.md` file
 
 ---
 
 **Created with Vite + React + TailwindCSS**
+
+---
+
+## 📚 Translations
+
+The website supports **Polish (pl)** and **English (en)** languages.
+Translation files are located in `src/i18n/translations.js`.
