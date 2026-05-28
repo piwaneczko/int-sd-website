@@ -1,10 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../ui/button'
-import { ArrowRight, Cpu, Activity, BarChart3, Layers, Code, Shield, Clock, FileText, Wifi } from 'lucide-react'
+import { ArrowRight, Cpu, Activity, BarChart3, Layers, Code, Shield, Clock, Wifi } from 'lucide-react'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function MINTSection() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
+  const m = t.mint
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background */}
@@ -16,15 +19,12 @@ export function MINTSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <span className="text-primary font-medium tracking-wider text-sm uppercase mb-2 block">
-            Nasz Główny Projekt
+            {m.badge}
           </span>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            MINT <span className="text-gradient">Inertial Navigation</span>
+            MINT <span className="text-gradient">{m.title2}</span>
           </h2>
-          <p className="text-deep-400 max-w-2xl mx-auto text-lg">
-            Micro Inertial Navigation Technology - zaawansowany system pomiaru 
-            orientacji i pozycji na bazie sensorów IMU i algorytmów sensor fusion.
-          </p>
+          <p className="text-deep-400 max-w-2xl mx-auto text-lg">{m.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-20">
@@ -33,21 +33,16 @@ export function MINTSection() {
             <div>
               <h3 className="text-2xl font-bold text-white mb-4 flex items-center gap-3">
                 <Layers className="text-primary" size={28} />
-                Architektura Systemu
+                {m.archTitle}
               </h3>
-              <p className="text-deep-300 leading-relaxed">
-                MINT to kompletne rozwiązanie inertial navigation wykorzystujące
-                zaawansowane algorytmy kalman filter i sensor fusion. System
-                integruje dane z akcelerometrów, żyroskopów i magnetometrów
-                dla precyzyjnego wyznaczania orientacji i ruchu.
-              </p>
+              <p className="text-deep-300 leading-relaxed">{m.archDesc}</p>
             </div>
 
             <div className="grid grid-cols-2 gap-6">
               <div className="glass-panel">
                 <div className="flex items-center gap-3 mb-3">
                   <Cpu className="text-primary" size={20} />
-                  <span className="text-sm font-semibold text-white">Hardware</span>
+                  <span className="text-sm font-semibold text-white">{m.hwTitle}</span>
                 </div>
                 <ul className="text-xs text-deep-400 space-y-1">
                   <li>• STM32 / nRF52</li>
@@ -59,7 +54,7 @@ export function MINTSection() {
               <div className="glass-panel">
                 <div className="flex items-center gap-3 mb-3">
                   <Code className="text-primary" size={20} />
-                  <span className="text-sm font-semibold text-white">Software</span>
+                  <span className="text-sm font-semibold text-white">{m.swTitle}</span>
                 </div>
                 <ul className="text-xs text-deep-400 space-y-1">
                   <li>• Kalman Filter</li>
@@ -71,52 +66,53 @@ export function MINTSection() {
             </div>
 
             <Button variant="primary" size="lg" className="w-full md:w-auto" onClick={() => navigate('/mint')}>
-              Poznaj MINT
+              {m.btnLearn}
               <ArrowRight className="ml-2" size={20} />
             </Button>
           </div>
 
           {/* Visualization */}
           <div className="relative">
-            <div className="aspect-square bg-deep-800/50 backdrop-blur border border-deep-700/50 rounded-3xl p-8 relative overflow-hidden">
-              {/* Background grid */}
-              <div className="absolute inset-0" style={{
-                backgroundImage: 'linear-gradient(#333 1px, transparent 1px), linear-gradient(90deg, #333 1px, transparent 1px)',
-                backgroundSize: '40px 40px',
-                opacity: 0.3
-              }} />
-              
-              {/* Center circle */}
-              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-br from-primary/20 to-cyan-500/10 rounded-full flex items-center justify-center relative">
-                <div className="absolute inset-0 border-2 border-primary/30 rounded-full animate-pulse" />
-                <div className="w-24 h-24 flex items-center justify-center">
-                  <Activity className="text-primary" size={48} />
-                </div>
-              </div>
+            <div className="aspect-square bg-deep-800/50 backdrop-blur border border-deep-700/50 rounded-3xl overflow-hidden">
+              <svg viewBox="0 0 480 480" className="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <pattern id="mintGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#333" strokeWidth="0.8" opacity="0.4"/>
+                  </pattern>
+                </defs>
 
-              {/* Sensor positions */}
-              <div className="absolute top-1/4 left-1/4 w-20 h-20 bg-deep-900/90 border border-primary/30 rounded-xl p-3 flex items-center justify-center">
-                <span className="text-xs font-mono text-primary">ACCEL</span>
-              </div>
-              
-              <div className="absolute top-1/4 right-1/4 w-20 h-20 bg-deep-900/90 border border-primary/30 rounded-xl p-3 flex items-center justify-center">
-                <span className="text-xs font-mono text-primary">GYRO</span>
-              </div>
-              
-              <div className="absolute bottom-1/4 left-1/4 w-20 h-20 bg-deep-900/90 border border-primary/30 rounded-xl p-3 flex items-center justify-center">
-                <span className="text-xs font-mono text-primary">MAG</span>
-              </div>
-              
-              <div className="absolute bottom-1/4 right-1/4 w-20 h-20 bg-deep-900/90 border border-primary/30 rounded-xl p-3 flex items-center justify-center">
-                <span className="text-xs font-mono text-primary">TEMP</span>
-              </div>
+                {/* Grid */}
+                <rect width="480" height="480" fill="url(#mintGrid)" />
 
-              {/* Connecting lines */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ opacity: 0.3 }}>
-                <path d="M 160 160 L 240 240" stroke="currentColor" strokeOpacity="0.5" strokeWidth="2" />
-                <path d="M 320 160 L 240 240" stroke="currentColor" strokeOpacity="0.5" strokeWidth="2" />
-                <path d="M 160 320 L 240 240" stroke="currentColor" strokeOpacity="0.5" strokeWidth="2" />
-                <path d="M 320 320 L 240 240" stroke="currentColor" strokeOpacity="0.5" strokeWidth="2" />
+                {/* Lines from center to each sensor */}
+                <line x1="240" y1="240" x2="240" y2="72"  stroke="#0ea5e9" strokeOpacity="0.45" strokeWidth="1.5"/>
+                <line x1="240" y1="240" x2="82"  y2="168" stroke="#0ea5e9" strokeOpacity="0.45" strokeWidth="1.5"/>
+                <line x1="240" y1="240" x2="398" y2="168" stroke="#0ea5e9" strokeOpacity="0.45" strokeWidth="1.5"/>
+                <line x1="240" y1="240" x2="82"  y2="312" stroke="#0ea5e9" strokeOpacity="0.45" strokeWidth="1.5"/>
+                <line x1="240" y1="240" x2="398" y2="312" stroke="#0ea5e9" strokeOpacity="0.45" strokeWidth="1.5"/>
+
+                {/* Center MINT circle */}
+                <circle cx="240" cy="240" r="54" fill="#111111" stroke="#0ea5e9" strokeOpacity="0.25" strokeWidth="1.5"/>
+                <circle cx="240" cy="240" r="54" fill="none" stroke="#0ea5e9" strokeOpacity="0.5" strokeWidth="1.5">
+                  <animate attributeName="stroke-opacity" values="0.5;0.15;0.5" dur="3s" repeatCount="indefinite"/>
+                </circle>
+                <text x="240" y="247" textAnchor="middle" fill="white" fontSize="20" fontWeight="bold" fontFamily="sans-serif">MINT</text>
+
+                {/* Sensor boxes — drawn last so they cover line ends */}
+                {[
+                  { label: 'BARO',  cx: 240, cy: 54  },
+                  { label: 'ACCEL', cx: 82,  cy: 154 },
+                  { label: 'GYRO',  cx: 398, cy: 154 },
+                  { label: 'MAG',   cx: 82,  cy: 326 },
+                  { label: 'TEMP',  cx: 398, cy: 326 },
+                ].map(({ label, cx, cy }) => (
+                  <g key={label}>
+                    <rect x={cx - 42} y={cy - 18} width="84" height="36" rx="8"
+                          fill="#0a0a0a" stroke="#0ea5e9" strokeOpacity="0.4" strokeWidth="1.5"/>
+                    <text x={cx} y={cy + 5} textAnchor="middle"
+                          fill="#0ea5e9" fontSize="12" fontFamily="monospace">{label}</text>
+                  </g>
+                ))}
               </svg>
             </div>
           </div>
@@ -124,7 +120,7 @@ export function MINTSection() {
 
         {/* Tech Stack */}
         <div className="border-t border-deep-800/50 pt-16">
-          <h3 className="text-2xl font-bold text-white mb-8 text-center">Technologie MINT</h3>
+          <h3 className="text-2xl font-bold text-white mb-8 text-center">{m.techTitle}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
               { icon: <Cpu />, name: "STM32", desc: "MCU platform" },

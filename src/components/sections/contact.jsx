@@ -1,17 +1,18 @@
 import React from 'react'
 import { Button } from '../ui/button'
 import { Card, CardContent } from '../ui/card'
-import { Mail, MapPin, Phone, Send, Github, Linkedin, MessageSquare } from 'lucide-react'
+import { Mail, MapPin, Phone, Send, Github, Linkedin } from 'lucide-react'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Contact() {
+  const { t } = useLanguage()
+  const c = t.contact
   return (
     <section className="py-20 bg-deep-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Kontakt</h2>
-          <p className="text-deep-400 max-w-2xl mx-auto">
-            Chcesz współpracować? Napisz do mnie!
-          </p>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{c.title}</h2>
+          <p className="text-deep-400 max-w-2xl mx-auto">{c.subtitle}</p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -22,43 +23,36 @@ export function Contact() {
                 <form className="space-y-6">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium text-deep-400 mb-2">Imię</label>
-                      <input 
-                        type="text" 
+                      <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelName}</label>
+                      <input type="text"
                         className="w-full bg-deep-800/50 border border-deep-700/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                        placeholder="Jan Kowalski"
-                      />
+                        placeholder={c.placeholderName} />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-deep-400 mb-2">Email</label>
-                      <input 
-                        type="email" 
+                      <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelEmail}</label>
+                      <input type="email"
                         className="w-full bg-deep-800/50 border border-deep-700/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                        placeholder="jan@example.com"
-                      />
+                        placeholder="email@example.com" />
                     </div>
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-deep-400 mb-2">Temat</label>
-                    <input 
-                      type="text" 
+                    <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelSubject}</label>
+                    <input type="text"
                       className="w-full bg-deep-800/50 border border-deep-700/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
-                      placeholder="Propozycja współpracy"
-                    />
+                      placeholder={c.placeholderSubject} />
                   </div>
                   
                   <div>
-                    <label className="block text-sm font-medium text-deep-400 mb-2">Wiadomość</label>
-                    <textarea 
+                    <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelMessage}</label>
+                    <textarea
                       className="w-full bg-deep-800/50 border border-deep-700/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all h-32 resize-none"
-                      placeholder="Opisz swój projekt..."
-                    />
+                      placeholder={c.placeholderMessage} />
                   </div>
                   
                   <Button variant="primary" className="w-full">
                     <Send className="mr-2" size={18} />
-                    Wyślij wiadomość
+                    {c.btnSend}
                   </Button>
                 </form>
               </CardContent>
@@ -81,7 +75,7 @@ export function Contact() {
                   <Phone size={20} />
                 </div>
                 <div>
-                  <div className="text-sm text-deep-400">Telefon</div>
+                  <div className="text-sm text-deep-400">{c.labelPhone}</div>
                   <div className="text-white font-medium">+48 503 124 502</div>
                 </div>
               </Card>
@@ -91,7 +85,7 @@ export function Contact() {
           {/* Contact Info */}
           <div className="space-y-8">
             <Card className="p-8">
-              <h3 className="text-xl font-semibold text-white mb-6">Dane kontaktowe</h3>
+              <h3 className="text-xl font-semibold text-white mb-6">{c.infoTitle}</h3>
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-deep-400 mb-2">Email</label>
@@ -100,20 +94,18 @@ export function Contact() {
                   </a>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-deep-400 mb-2">Telefon</label>
-                  <a href="tel:+48503124502" className="text-white text-lg hover:text-primary transition-colors">
-                    +48 503 124 502
-                  </a>
+                  <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelPhone}</label>
+                  <a href="tel:+48503124502" className="text-white text-lg hover:text-primary transition-colors">+48 503 124 502</a>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-deep-400 mb-2">Adres</label>
-                  <div className="text-white text-lg">Warszawa / Poznań, Polska</div>
+                  <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelAddress}</label>
+                  <div className="text-white text-lg">{c.address}</div>
                 </div>
               </div>
             </Card>
 
             <Card className="p-8">
-              <h3 className="text-xl font-semibold text-white mb-6">Profiling</h3>
+              <h3 className="text-xl font-semibold text-white mb-6">{c.profilesTitle}</h3>
               <div className="space-y-4">
                 <a href="https://github.com/piwaneczko" className="flex items-center gap-3 p-3 bg-deep-800/50 rounded-lg hover:bg-deep-800 transition-colors">
                   <div className="w-10 h-10 bg-github/10 rounded-full flex items-center justify-center text-white">

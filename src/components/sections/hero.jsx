@@ -1,10 +1,13 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../ui/button'
-import { ArrowRight, Cpu, Activity, Navigation, Wifi } from 'lucide-react'
+import { ArrowRight, Cpu, Activity } from 'lucide-react'
+import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Hero() {
   const navigate = useNavigate()
+  const { t } = useLanguage()
+  const h = t.hero
   return (
     <section className="relative pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
       {/* Background gradient */}
@@ -23,40 +26,37 @@ export function Hero() {
           <div className="space-y-6">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-primary/10 rounded-full border border-primary/20">
               <span className="w-2 h-2 bg-primary rounded-full animate-pulse" />
-              <span className="text-sm text-primary font-medium">Dostępny do współpracy</span>
+              <span className="text-sm text-primary font-medium">{h.badge}</span>
             </div>
-            
+
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white leading-tight">
-              Inżynieria <span className="text-gradient">technologii</span> przyszłości
+              {h.title1} <span className="text-gradient">{h.title2}</span> {h.title3}
             </h1>
-            
-            <p className="text-lg text-deep-400 max-w-lg">
-              Specjalizuję się w systemach wbudowanych, navigacji inertialnej i 
-              rozwoju oprogramowania. Tworzę rozwiązania deep-tech dla wymagających projektów.
-            </p>
-            
+
+            <p className="text-lg text-deep-400 max-w-lg">{h.subtitle}</p>
+
             <div className="flex flex-wrap gap-4">
               <Button variant="primary" size="lg" onClick={() => navigate('/about')}>
-                O mnie
+                {h.btnAbout}
                 <ArrowRight className="ml-2" size={20} />
               </Button>
               <Button variant="outline" size="lg" onClick={() => navigate('/contact')}>
-                Kontakt
+                {h.btnContact}
               </Button>
             </div>
 
             <div className="pt-8 grid grid-cols-3 gap-8 border-t border-deep-800/50">
               <div>
                 <div className="text-3xl font-bold text-white">15+</div>
-                <div className="text-sm text-deep-400">Lat doświadczenia</div>
+                <div className="text-sm text-deep-400">{h.statYears}</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-white">20+</div>
-                <div className="text-sm text-deep-400">Zrealizowanych projektów</div>
+                <div className="text-sm text-deep-400">{h.statProjects}</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-white">PhD</div>
-                <div className="text-sm text-deep-400">Technical Sciences</div>
+                <div className="text-sm text-deep-400">{h.statDegree}</div>
               </div>
             </div>
           </div>
