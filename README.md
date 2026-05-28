@@ -1,4 +1,4 @@
-# Int Software Development - Website
+# I.N.T. Software Development - Website
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![React](https://img.shields.io/badge/react-%5E18.2.0-blue.svg)
@@ -7,7 +7,7 @@
 
 ## 📖 O projekcie
 
-To jest nowoczesna strona internetowa dla **Int Software Development** - Paweł Iwaneczko, przedstawiająca działalność w dziedzinie:
+To jest nowoczesna strona internetowa dla **I.N.T. Software Development** - Paweł Iwaneczko, przedstawiająca działalność w dziedzinie:
 - 💻 Software Development
 - 🔧 Embedded Systems
 - 🧭 Inertial Navigation (MINT)

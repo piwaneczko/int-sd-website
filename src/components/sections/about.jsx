@@ -17,7 +17,7 @@ const experience = [
   {
     year: '2026 – Present',
     title: 'PhD in Technical Sciences',
-    company: 'Int Software Development',
+    company: 'I.N.T. Software Development',
     description: 'Research in inertial navigation, signal processing and embedded systems. Lead developer of MINT project.',
     icon: <GraduationCap />
   },
