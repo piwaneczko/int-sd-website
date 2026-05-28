@@ -45,3 +45,8 @@ coverage/
 tmp/
 temp/
 *.tmp
+
+# Deploy
+deploy.log
+.env
+.env.local

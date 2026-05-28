@@ -1,4 +1,4 @@
-# I.N.T. Software Development - Website
+# Int Software Development - Website
 
 ![License](https://img.shields.io/badge/license-MIT-blue.svg)
 ![React](https://img.shields.io/badge/react-%5E18.2.0-blue.svg)
@@ -7,7 +7,7 @@
 
 ## 📖 O projekcie
 
-To jest nowoczesna strona internetowa dla **I.N.T. Software Development** - Paweł Iwaneczko, przedstawiająca działalność w dziedzinie:
+To jest nowoczesna strona internetowa dla **Int Software Development** - Paweł Iwaneczko, przedstawiająca działalność w dziedzinie:
 - 💻 Software Development
 - 🔧 Embedded Systems
 - 🧭 Inertial Navigation (MINT)
@@ -54,6 +54,7 @@ src/
 ### Wymagania
 - Node.js (LTS)
 - npm (lub pnpm/yarn)
+- rsync (dla deployu)
 
 ### Krok po kroku
 
@@ -84,6 +85,40 @@ npm run preview
 | `npm run dev` | Uruchomienie dev servera na http://localhost:3000 |
 | `npm run build` | Budowanie plików do katalogu `/dist` |
 | `npm run preview` | Podgląd wybuildowanej strony |
+| `npm run deploy` | Deploy na Synology via SSH (Linux/Mac) |
+| `npm run deploy:win` | Deploy na Synology via SSH (Windows) |
+
+---
+
+## 🌐 Deployment
+
+### Wymagania
+1. Dostęp do serwera Synology przez SSH
+2. Zainstalowany `rsync`
+
+### Konfiguracja
+Dodaj wpis do `~/.ssh/config`:
+```
+Host synology
+    HostName your-synology-ip-or-domain
+    User your-username
+    Port 22
+```
+
+### Uruchomienie
+```bash
+# Linux/Mac
+npm run deploy
+
+# Windows
+npm run deploy:win
+```
+
+Skrypt automatycznie:
+- buduje projekt (jeśli nie był)
+- tworzy katalog docelowy
+- kopiuje pliki przez rsync
+- zapisuje log do `deploy.log`
 
 ---
 
