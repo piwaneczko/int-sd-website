@@ -165,6 +165,33 @@
         "Przełożyć do dwóch foremek, odstawić na 1 godzinę. Piec w 150–170°C, po 15 min zwiększyć do 200°C i piec jeszcze 50 minut.",
         "Wyjąć z foremek i dopiec 10 minut do góry nogami. Gotowy chleb 'puka od spodu'."
       ]
+    },
+    {
+      "id": 8,
+      "title": "Tiramisu",
+      "category": "coś słodkiego",
+      "time": "3 godziny + chłodzenie",
+      "serving": "na zimno",
+      "source": "https://www.kwestiasmaku.com/kuchnia_wloska/tiramisu/tiramisu.html",
+      "sourceLabel": "Kwestia smaku",
+      "image": "https://www.kwestiasmaku.com/sites/v123.kwestiasmaku.com/files/deser_tiramisu_0.jpg",
+      "ingredients": [
+        { "name": "zaparzona mocniejsza kawa", "amount": "350 ml" },
+        { "name": "spirytus", "amount": "3 kieliszki" },
+        { "name": "jajka", "amount": "2 całe + 2 żółtka" },
+        { "name": "cukier pudru", "amount": "70 g" },
+        { "name": "mascarpone", "amount": "500 g" },
+        { "name": "biszkopty włoskie Savoiardi", "amount": "300 g" },
+        { "name": "gorzkie kakao", "amount": "ok. 3 łyżki" }
+      ],
+      "steps": [
+        "Jajka włożyć do zlewu i przelać gorącą wodą. Zaparzyć kawę, dodać spirytus i całość ostudzić.",
+        "Oddzielić żółtka od białek. Wszystkie 4 żółtka ubić z cukrem pudrem na puszysty i jasny krem (ok. 7 minut) - najlepiej początkowo ubijać na parze (w metalowej misce zawieszonej na garnku z parującą wodą), a gdy żółtka będą już ciepłe, odstawić z pary i dalej ubijać.",
+        "Następnie dodawać porcjami (po 3 łyżki) mascarpone, ale już w krótszych odstępach czasu, cały czas ubijając, aż krem będzie gęsty i jednolity.",
+        "W oddzielnej misce ubić białka na idealnie sztywną pianę z dodatkiem małej szczypty soli. Połączyć je z kremem z żółtek i mascarpone delikatnie mieszając łyżką.",
+        "Połowę biszkoptów na moment zanurzać w kawie i układać w prostokątnym naczyniu np. żaroodpornym lub szklanym (ok. 20 x 22 cm) lub w pojedynczych naczynkach. Posypać cienką warstwą kakao.",
+        "Wyłożyć połowę kremu i przykryć kolejną warstwą nasączonych biszkoptów. Znów oprószyć kakao. Posmarować resztą kremu, posypać kakao i wstawić do lodówki na minimum 3 godziny lub na całą noc."
+      ]
     }
   ]
 }
