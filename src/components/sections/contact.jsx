@@ -1,12 +1,47 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '../ui/button'
 import { Card, CardContent } from '../ui/card'
-import { Mail, MapPin, Phone, Send, Github, Linkedin } from 'lucide-react'
+import { Mail, MapPin, Phone, Send, Github, Linkedin, Check, AlertCircle } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
+import emailjs from '@emailjs/browser'
 
 export function Contact() {
   const { t } = useLanguage()
   const c = t.contact
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
+  const [status, setStatus] = useState({ type: '', message: '' })
+  const [loading, setLoading] = useState(false)
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setLoading(true)
+    setStatus({ type: '', message: '' })
+
+    try {
+      await emailjs.send(
+        'service_6d9k9f8', // Zastąp swoim Service ID
+        'template_fjg9k9f', // Zastąp swoim Template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        'YOUR_PUBLIC_KEY' // Zastąp swoim Public Key
+      )
+      setStatus({ type: 'success', message: 'Wiadomość została wysłana!' })
+      setFormData({ name: '', email: '', subject: '', message: '' })
+    } catch (error) {
+      setStatus({ type: 'error', message: 'Wystąpił błąd. Spróbuj ponownie.' })
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
   return (
     <section className="py-20 bg-deep-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -20,40 +55,65 @@ export function Contact() {
           <div className="space-y-6">
             <Card>
               <CardContent className="p-8">
-                <form className="space-y-6">
+                <form className="space-y-6" onSubmit={handleSubmit}>
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                     <div>
                       <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelName}</label>
                       <input type="text"
+                        name="name"
+                        value={formData.name}
+                        onChange={handleChange}
                         className="w-full bg-deep-800/50 border border-deep-700/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder={c.placeholderName} />
                     </div>
                     <div>
                       <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelEmail}</label>
                       <input type="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleChange}
                         className="w-full bg-deep-800/50 border border-deep-700/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                         placeholder="email@example.com" />
                     </div>
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelSubject}</label>
                     <input type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
                       className="w-full bg-deep-800/50 border border-deep-700/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all"
                       placeholder={c.placeholderSubject} />
                   </div>
-                  
+
                   <div>
                     <label className="block text-sm font-medium text-deep-400 mb-2">{c.labelMessage}</label>
                     <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
                       className="w-full bg-deep-800/50 border border-deep-700/50 rounded-lg px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all h-32 resize-none"
                       placeholder={c.placeholderMessage} />
                   </div>
-                  
-                  <Button variant="primary" className="w-full">
-                    <Send className="mr-2" size={18} />
-                    {c.btnSend}
+
+                  <Button variant="primary" className="w-full" disabled={loading}>
+                    {loading ? (
+                      <span className="animate-pulse">Wysyłanie...</span>
+                    ) : (
+                      <>
+                        <Send className="mr-2" size={18} />
+                        {c.btnSend}
+                      </>
+                    )}
                   </Button>
+
+                  {status.message && (
+                    <div className={`flex items-center justify-center gap-2 p-3 rounded-lg ${status.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                      {status.type === 'success' ? <Check size={18} /> : <AlertCircle size={18} />}
+                      <span className="text-sm">{status.message}</span>
+                    </div>
+                  )}
                 </form>
               </CardContent>
             </Card>
