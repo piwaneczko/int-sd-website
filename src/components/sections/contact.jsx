@@ -9,15 +9,37 @@ export function Contact() {
   const { t } = useLanguage()
   const c = t.contact
   const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' })
-  const [status, setStatus] = useState({ type: '', message: '' })
+  const [status, setStatus] = useState({ type: '', messageKey: '' })
   const [loading, setLoading] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault()
     setLoading(true)
-    setStatus({ type: '', message: '' })
+    setStatus({ type: '', messageKey: '' })
 
-    try {      
+    // Validation
+    if (!formData.name.trim()) {
+      setStatus({ type: 'error', messageKey: 'msgErrorName' })
+      setLoading(false)
+      return
+    }
+    if (!formData.email.trim()) {
+      setStatus({ type: 'error', messageKey: 'msgErrorEmail' })
+      setLoading(false)
+      return
+    }
+    if (!formData.subject.trim()) {
+      setStatus({ type: 'error', messageKey: 'msgErrorSubject' })
+      setLoading(false)
+      return
+    }
+    if (!formData.message.trim()) {
+      setStatus({ type: 'error', messageKey: 'msgErrorMessage' })
+      setLoading(false)
+      return
+    }
+
+    try {
       await emailjs.send(
         'service_2g1u1sj',
         'template_gm9g6sc',
@@ -29,10 +51,10 @@ export function Contact() {
         },
         '16s6zXz9qIQdpP7gN'
       )
-      setStatus({ type: 'success', message: t.contact.msgSuccess })
+      setStatus({ type: 'success', messageKey: 'msgSuccess' })
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {
-      setStatus({ type: 'error', message: t.contact.msgError })
+      setStatus({ type: 'error', messageKey: 'msgError' })
     } finally {
       setLoading(false)
     }
@@ -99,7 +121,7 @@ export function Contact() {
 
                   <Button variant="primary" className="w-full" disabled={loading}>
                     {loading ? (
-                      <span className="animate-pulse">{t.contact.msgSending}</span>
+                      <span className="animate-pulse">{c.msgSending}</span>
                     ) : (
                       <>
                         <Send className="mr-2" size={18} />
@@ -108,10 +130,10 @@ export function Contact() {
                     )}
                   </Button>
 
-                  {status.message && (
+                  {status.messageKey && (
                     <div className={`flex items-center justify-center gap-2 p-3 rounded-lg ${status.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
                       {status.type === 'success' ? <Check size={18} /> : <AlertCircle size={18} />}
-                      <span className="text-sm">{status.message}</span>
+                      <span className="text-sm">{c[status.messageKey]}</span>
                     </div>
                   )}
                 </form>
