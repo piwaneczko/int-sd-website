@@ -31,9 +31,9 @@ export function About() {
           <div className="lg:col-span-1 space-y-8">
             <div className="text-center lg:text-left">
               <img
-                src="https://ui-avatars.com/api/?name=Pawe%C5%82+Iwaneczko&background=0ea5e9&color=fff&size=256"
+                src="/images/profilowe.jpg"
                 alt="Paweł Iwaneczko"
-                className="w-48 h-48 rounded-2xl mx-auto lg:mx-0 shadow-2xl shadow-primary/20 mb-6"
+                className="w-48 h-48 rounded-2xl mx-auto lg:mx-0 shadow-2xl shadow-primary/20 mb-6 object-cover aspect-square"
               />
               <h2 className="text-3xl font-bold text-white mb-1">Paweł Iwaneczko</h2>
               <p className="text-primary font-medium mb-1">PhD in Technical Sciences</p>
