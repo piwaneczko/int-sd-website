@@ -29,10 +29,10 @@ export function Contact() {
         },
         'YOUR_PUBLIC_KEY' // Zastąp swoim Public Key
       )
-      setStatus({ type: 'success', message: 'Wiadomość została wysłana!' })
+      setStatus({ type: 'success', message: t.contact.msgSuccess })
       setFormData({ name: '', email: '', subject: '', message: '' })
     } catch (error) {
-      setStatus({ type: 'error', message: 'Wystąpił błąd. Spróbuj ponownie.' })
+      setStatus({ type: 'error', message: t.contact.msgError })
     } finally {
       setLoading(false)
     }
@@ -99,7 +99,7 @@ export function Contact() {
 
                   <Button variant="primary" className="w-full" disabled={loading}>
                     {loading ? (
-                      <span className="animate-pulse">Wysyłanie...</span>
+                      <span className="animate-pulse">{t.contact.msgSending}</span>
                     ) : (
                       <>
                         <Send className="mr-2" size={18} />
