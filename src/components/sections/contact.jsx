@@ -17,17 +17,17 @@ export function Contact() {
     setLoading(true)
     setStatus({ type: '', message: '' })
 
-    try {
+    try {      
       await emailjs.send(
-        'service_6d9k9f8', // Zastąp swoim Service ID
-        'template_fjg9k9f', // Zastąp swoim Template ID
+        'service_2g1u1sj',
+        'template_gm9g6sc',
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          name: formData.name,
+          email: formData.email,
           subject: formData.subject,
           message: formData.message,
         },
-        'YOUR_PUBLIC_KEY' // Zastąp swoim Public Key
+        '16s6zXz9qIQdpP7gN'
       )
       setStatus({ type: 'success', message: t.contact.msgSuccess })
       setFormData({ name: '', email: '', subject: '', message: '' })
