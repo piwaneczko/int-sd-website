@@ -45,7 +45,7 @@ export function MINTSection() {
                   <span className="text-sm font-semibold text-white">{m.hwTitle}</span>
                 </div>
                 <ul className="text-xs text-deep-400 space-y-1">
-                  <li>• STM32 / nRF52</li>
+                  <li>• nRF52</li>
                   <li>• MEMS IMU</li>
                   <li>• Low-noise amplifiers</li>
                   <li>• Temperature compensation</li>
@@ -123,7 +123,7 @@ export function MINTSection() {
           <h3 className="text-2xl font-bold text-white mb-8 text-center">{m.techTitle}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: <Cpu />, name: "STM32", desc: "MCU platform" },
+              { icon: <Cpu />, name: "nRF52", desc: "BLE MCU" },
               { icon: <Code />, name: "C/C++", desc: "Embedded code" },
               { icon: <Layers />, name: "FreeRTOS", desc: "Real-time OS" },
               { icon: <Shield />, name: "IMU", desc: "Sensor hardware" },

@@ -77,7 +77,7 @@ export function Hero() {
                   <div className="absolute top-4 left-4 w-32 h-20 bg-deep-900/90 backdrop-blur border border-deep-700 rounded-xl p-3">
                     <div className="flex items-center gap-2 mb-2">
                       <Cpu size={16} className="text-primary" />
-                      <span className="text-xs font-mono text-deep-300">STM32</span>
+                      <span className="text-xs font-mono text-deep-300">nRF52</span>
                     </div>
                     <div className="w-full bg-deep-800 rounded h-1.5">
                       <div className="bg-primary h-1.5 rounded w-3/4 animate-pulse" />
