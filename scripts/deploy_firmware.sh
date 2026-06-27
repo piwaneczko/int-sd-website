@@ -2,10 +2,15 @@
 # Deploy a new MINT firmware binary to int-sd.net/ota/
 #
 # Usage:
-#   ./scripts/deploy_firmware.sh <path/to/app_update.bin> <version>
+#   ./scripts/deploy_firmware.sh <path/to/signed-firmware.bin> <version>
+#
+# The binary must be the MCUboot-SIGNED image (the app's OTA verifies the
+# MCUboot image header + SHA256 TLV). With the current sysbuild layout that is
+# build/src/firmware/zephyr/zephyr.signed.bin (NOT build/src/zephyr/app_update.bin,
+# which only exists in a non-sysbuild build).
 #
 # Example:
-#   ./scripts/deploy_firmware.sh ~/projects/mint/firmware/build/src/zephyr/app_update.bin 1.1.0
+#   ./scripts/deploy_firmware.sh ~/projects/mint/firmware/build/src/firmware/zephyr/zephyr.signed.bin 1.1.0
 #
 # The script:
 #   1. Copies the binary to public/ota/firmware.bin
@@ -19,9 +24,10 @@ REPO_ROOT="$(dirname "$SCRIPT_DIR")"
 
 FIRMWARE_BIN="${1:-}"
 VERSION="${2:-}"
+RELEASE_NOTES="${3:-MINT firmware $VERSION}"
 
 if [[ -z "$FIRMWARE_BIN" || -z "$VERSION" ]]; then
-    echo "Usage: $0 <app_update.bin> <version>"
+    echo "Usage: $0 <signed-firmware.bin> <version> [release notes]"
     echo "  version format: major.minor.patch  (e.g. 1.1.0)"
     exit 1
 fi
@@ -38,15 +44,18 @@ mkdir -p "$OTA_DIR"
 cp "$FIRMWARE_BIN" "$OTA_DIR/firmware.bin"
 SIZE=$(stat -c%s "$OTA_DIR/firmware.bin" 2>/dev/null || stat -f%z "$OTA_DIR/firmware.bin")
 
-# Update manifest
-cat > "$OTA_DIR/manifest.json" <<EOF
-{
-  "version": "$VERSION",
-  "url": "https://int-sd.net/ota/firmware.bin",
-  "size": $SIZE,
-  "releaseNotes": "MINT firmware $VERSION"
-}
-EOF
+# Update manifest (python3 builds the JSON so release notes with quotes/newlines
+# are escaped correctly).
+python3 - "$VERSION" "$SIZE" "$RELEASE_NOTES" > "$OTA_DIR/manifest.json" <<'PY'
+import json, sys
+version, size, notes = sys.argv[1], int(sys.argv[2]), sys.argv[3]
+print(json.dumps({
+    "version": version,
+    "url": "https://int-sd.net/ota/firmware.bin",
+    "size": size,
+    "releaseNotes": notes,
+}, indent=2))
+PY
 
 echo "Manifest updated:"
 cat "$OTA_DIR/manifest.json"
