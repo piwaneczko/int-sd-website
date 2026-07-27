@@ -39,6 +39,10 @@ export function About() {
               <p className="text-primary font-medium mb-1">PhD in Technical Sciences</p>
               <p className="text-deep-400 text-sm mb-2">mob. +48 503 124 502</p>
               <p className="text-deep-400 mb-6">{a.bio}</p>
+              <div className="text-left p-4 bg-primary/5 border border-primary/20 rounded-xl mb-6">
+                <p className="text-primary text-sm font-semibold mb-1">{a.missionTitle}</p>
+                <p className="text-deep-400 text-sm leading-relaxed">{a.missionText}</p>
+              </div>
               <div className="flex flex-wrap justify-center lg:justify-start gap-3">
                 <a href="https://github.com/piwaneczko" target="_blank" rel="noopener noreferrer"
                   className="px-4 py-2 bg-deep-800 text-white rounded-lg text-sm font-medium hover:bg-deep-700 transition-colors">GitHub</a>

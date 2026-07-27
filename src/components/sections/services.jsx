@@ -16,7 +16,8 @@ export function Services() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{s.title}</h2>
-          <p className="text-deep-400 max-w-2xl mx-auto">{s.subtitle}</p>
+          <p className="text-deep-400 max-w-2xl mx-auto mb-2">{s.subtitle}</p>
+          <p className="text-deep-500 text-sm max-w-2xl mx-auto italic">{s.missionNote}</p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {s.items.map((service, index) => (

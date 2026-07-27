@@ -34,6 +34,7 @@ export function MintTimelineSection() {
   const items = m.timeline.map((item, i) => ({
     ...item,
     media: media[i],
+    futureLabel: item.future ? m.goalLabel : undefined,
   }))
 
   return (

@@ -12,15 +12,24 @@ export function Timeline({ items }) {
           <div key={index} className="flex gap-5">
             {/* Dot */}
             <div className="relative flex-shrink-0 mt-1">
-              <div className="w-4 h-4 bg-deep-800 border-2 border-primary rounded-full flex items-center justify-center">
-                <div className="w-2 h-2 bg-primary rounded-full" />
+              <div className={`w-4 h-4 rounded-full flex items-center justify-center ${
+                item.future ? 'bg-transparent border-2 border-dashed border-deep-600' : 'bg-deep-800 border-2 border-primary'
+              }`}>
+                <div className={`w-2 h-2 rounded-full ${item.future ? 'bg-deep-600' : 'bg-primary'}`} />
               </div>
             </div>
 
             {/* Content */}
             <div className="flex-1 pb-2">
-              <div className="text-xs text-primary font-mono mb-1">{item.year}</div>
-              <h4 className="text-lg font-semibold text-white">{item.title}</h4>
+              <div className={`text-xs font-mono mb-1 ${item.future ? 'text-deep-500' : 'text-primary'}`}>{item.year}</div>
+              <h4 className="text-lg font-semibold text-white flex items-center gap-2">
+                {item.title}
+                {item.future && item.futureLabel && (
+                  <span className="text-[10px] uppercase tracking-wider text-deep-400 border border-deep-600 rounded px-1.5 py-0.5">
+                    {item.futureLabel}
+                  </span>
+                )}
+              </h4>
               <div className="text-deep-400 text-sm mb-2 flex items-center gap-2">
                 {item.icon && <span className="shrink-0">{item.icon}</span>}
                 <span>{item.company}</span>
