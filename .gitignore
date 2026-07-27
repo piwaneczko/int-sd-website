@@ -50,3 +50,4 @@ temp/
 deploy.log
 .env
 .env.local
+public/ota/*
