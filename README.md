@@ -97,9 +97,8 @@ npm run preview
 | `npm run dev` | Start dev server on http://localhost:3000 |
 | `npm run build` | Build files to `/dist` directory |
 | `npm run preview` | Preview built website |
-| `npm run deploy` | Deploy to Synology via SSH (Linux/Mac) |
-| `npm run deploy:win` | Deploy to Synology via SSH (Windows, PowerShell) |
-| `npm run deploy:cmd` | Deploy to Synology via SSH (Windows, cmd) |
+| `npm run deploy` | Deploy to Synology via SSH (Linux/Mac/WSL) |
+| `npm run deploy:win` | Deploy to Synology from Windows — runs `deploy.sh` inside WSL |
 | `npm run deploy:recipes` | Sync only `public/recipes.json` to Synology |
 
 ---
@@ -108,10 +107,10 @@ npm run preview
 
 ### Requirements
 1. SSH access to Synology server
-2. `rsync` installed
+2. `rsync` installed (in WSL, if deploying from Windows)
 
 ### Configuration
-Add entry to `~/.ssh/config`:
+Add entry to `~/.ssh/config` **inside WSL** (not Windows' own `~/.ssh/config` — `deploy.ps1` always runs `deploy.sh` inside WSL):
 ```
 Host synology
     HostName your-synology-ip-or-domain
@@ -121,18 +120,20 @@ Host synology
 
 ### Run
 ```bash
-# Linux/Mac
+# Linux/Mac/WSL
 npm run deploy
 
-# Windows
+# Windows (delegates to WSL)
 npm run deploy:win
 ```
 
-Script automatically:
-- builds the project (if not built)
-- creates destination directory
-- copies files via rsync
-- saves log to `deploy.log`
+`deploy.sh` automatically:
+- builds the project
+- creates the destination directory
+- copies files via `rsync --delete` (removes files on the server that no longer exist locally — `public/ota/*` is excluded from deletion since it's gitignored and may not be present on every machine)
+- saves a log entry to `deploy.log`
+
+`deploy.ps1` just forwards to `deploy.sh` inside WSL — there is no separate Windows-native deploy path anymore, to avoid two rsync implementations drifting apart.
 
 ---
 

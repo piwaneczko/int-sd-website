@@ -55,12 +55,14 @@ ssh $TARGET_HOST "mkdir -p $TARGET_PATH"
 log "Deploying files to: $TARGET_HOST:$TARGET_PATH"
 
 # Sync build files (excluding .gitkeep)
-rsync -avz --exclude='.gitkeep' "$BUILD_DIR/" "$TARGET_HOST:$TARGET_PATH/"
-
-# Sync public files if they exist
-if [ -d "public" ]; then
-    rsync -avz --exclude='.gitkeep' "public/" "$TARGET_HOST:$TARGET_PATH/"
-fi
+# Vite already copies everything from public/ into dist/ at build time, so
+# dist/ is the single source of truth here — a separate public/ sync is not
+# needed (and combined with --delete it would actively delete index.html and
+# assets/, since those don't exist under public/).
+# --delete removes files on the server that no longer exist locally (e.g. old
+# favicon, removed placeholders). ota/ is excluded from deletion because it's
+# gitignored and may not exist on every machine that runs a deploy.
+rsync -avz --delete --exclude='.gitkeep' --exclude='ota/' "$BUILD_DIR/" "$TARGET_HOST:$TARGET_PATH/"
 
 # Log deployment
 echo "Deployment completed at $(date)" >> "$LOG_FILE"
