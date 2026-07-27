@@ -45,10 +45,10 @@ export function MINTSection() {
                   <span className="text-sm font-semibold text-white">{m.hwTitle}</span>
                 </div>
                 <ul className="text-xs text-deep-400 space-y-1">
-                  <li>• nRF52</li>
-                  <li>• MEMS IMU</li>
-                  <li>• Low-noise amplifiers</li>
-                  <li>• Temperature compensation</li>
+                  <li>• nRF52840 (NINA-B302)</li>
+                  <li>• ICM-42688-P IMU</li>
+                  <li>• LIS3MDL magnetometer</li>
+                  <li>• BMP390L barometer</li>
                 </ul>
               </div>
               <div className="glass-panel">
@@ -59,7 +59,7 @@ export function MINTSection() {
                 <ul className="text-xs text-deep-400 space-y-1">
                   <li>• Kalman Filter</li>
                   <li>• Quaternion math</li>
-                  <li>• Real-time OS</li>
+                  <li>• Zephyr RTOS</li>
                   <li>• Sensor fusion</li>
                 </ul>
               </div>
@@ -123,9 +123,9 @@ export function MINTSection() {
           <h3 className="text-2xl font-bold text-white mb-8 text-center">{m.techTitle}</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {[
-              { icon: <Cpu />, name: "nRF52", desc: "BLE MCU" },
+              { icon: <Cpu />, name: "nRF52840", desc: "BLE MCU" },
               { icon: <Code />, name: "C/C++", desc: "Embedded code" },
-              { icon: <Layers />, name: "FreeRTOS", desc: "Real-time OS" },
+              { icon: <Layers />, name: "Zephyr", desc: "Real-time OS" },
               { icon: <Shield />, name: "IMU", desc: "Sensor hardware" },
               { icon: <BarChart3 />, name: "Kalman", desc: "Filter algorithm" },
               { icon: <Clock />, name: "Real-time", desc: "Low latency" },

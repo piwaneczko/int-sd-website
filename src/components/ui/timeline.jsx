@@ -26,6 +26,33 @@ export function Timeline({ items }) {
                 <span>{item.company}</span>
               </div>
               <p className="text-deep-300 text-sm leading-relaxed">{item.description}</p>
+              {item.media && item.media.length > 0 && (
+                <div className={`mt-3 grid gap-2 ${
+                  item.media.some((m) => m.wide)
+                    ? 'grid-cols-1'
+                    : item.media.length > 1 ? 'grid-cols-2 max-w-md' : 'grid-cols-1 max-w-xs'
+                }`}>
+                  {item.media.map((media, i) => (
+                    <div key={i}>
+                      {media.label && (
+                        <span className="inline-block text-[10px] uppercase tracking-wider text-primary bg-primary/10 border border-primary/30 rounded px-2 py-0.5 mb-2">
+                          {media.label}
+                        </span>
+                      )}
+                      <div className="aspect-video rounded-lg overflow-hidden border border-deep-700/50 bg-deep-800/50">
+                        <img
+                          src={media.src}
+                          alt={item.title}
+                          className={`w-full h-full ${media.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
+                          onError={(e) => {
+                            e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(item.title)}&background=1a1a2e&color=fff&size=128`
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         ))}

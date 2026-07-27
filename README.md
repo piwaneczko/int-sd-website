@@ -36,8 +36,10 @@ Access via:
 | Styling | Tailwind CSS 3 |
 | Routing | React Router 6 |
 | Icons | Lucide React |
-| Animations | Framer Motion |
-| Forms | HTML5 + CSS |
+| Forms | EmailJS (`@emailjs/browser`) |
+| i18n | Custom (`src/i18n/translations.js` + `LanguageContext`) |
+
+> Note: `framer-motion` is listed in `package.json` but is not currently used anywhere in `src` — animations are done with plain CSS transitions/keyframes.
 
 ---
 
@@ -47,9 +49,11 @@ Access via:
 src/
 ├── assets/           # Resources (images, icons)
 ├── components/         # React components
-│   ├── ui/           # UI components (Button, Card, etc.)
+│   ├── ui/           # UI components (Button, Card, Timeline, etc.)
 │   ├── layout/       # Page layout
 │   └── sections/     # Page sections
+├── contexts/         # React contexts (LanguageContext)
+├── i18n/             # Translations (pl/en) — translations.js
 ├── pages/            # Page components
 ├── styles/           # CSS styles
 └── utils/            # Utility functions
@@ -94,7 +98,9 @@ npm run preview
 | `npm run build` | Build files to `/dist` directory |
 | `npm run preview` | Preview built website |
 | `npm run deploy` | Deploy to Synology via SSH (Linux/Mac) |
-| `npm run deploy:win` | Deploy to Synology via SSH (Windows) |
+| `npm run deploy:win` | Deploy to Synology via SSH (Windows, PowerShell) |
+| `npm run deploy:cmd` | Deploy to Synology via SSH (Windows, cmd) |
+| `npm run deploy:recipes` | Sync only `public/recipes.json` to Synology |
 
 ---
 
@@ -135,12 +141,28 @@ Script automatically:
 | URL | Page |
 |-----|------|
 | `/` | Home |
-| `/mint` | MINT - Inertial Navigation |
+| `/mint` | MINT - Micro Inertial Navigation Tracker |
 | `/about` | About Me |
 | `/services` | Services |
 | `/portfolio` | Projects |
 | `/contact` | Contact |
 | `/cookbook` | Recipes of Generations (family recipes) |
+
+---
+
+## 📡 OTA Firmware Hosting (MINT)
+
+The site also serves firmware updates for the **MINT** device's Flutter
+companion app, as static files under `public/ota/`:
+
+| File | Purpose |
+|------|---------|
+| `public/ota/manifest.json` | Version, download URL, size, release notes — polled by the app's OTA manager |
+| `public/ota/firmware.bin` | Signed firmware binary served at `https://int-sd.net/ota/firmware.bin` |
+
+⚠️ These files are **gitignored** (`public/ota/*`) — they are not tracked in
+the repo and must be uploaded to the server independently of `npm run
+deploy` (e.g. via `rsync`), similar to `deploy:recipes`.
 
 ---
 
@@ -166,9 +188,11 @@ colors: {
 
 | File | Size | Gzip |
 |------|------|------|
-| index.html | 0.97 kB | 0.55 kB |
-| styles.css | 23.24 kB | 4.77 kB |
-| main.js | 241.50 kB | 74.40 kB |
+| index.html | 1.06 kB | 0.57 kB |
+| styles.css | 27.52 kB | 5.37 kB |
+| main.js | 263.02 kB | 81.45 kB |
+
+*(Filenames are hashed by Vite at build time, e.g. `index-[hash].css` / `index-[hash].js` under `dist/assets/` — simplified above for readability. Numbers from the latest `npm run build`.)*
 
 ---
 

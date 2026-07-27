@@ -1,7 +1,7 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Button } from '../ui/button'
-import { ArrowRight, Cpu, Activity } from 'lucide-react'
+import { ArrowRight, Cpu, Activity, Layers, Smartphone } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 
 export function Hero() {
@@ -87,7 +87,7 @@ export function Hero() {
                   <div className="absolute bottom-4 right-4 w-32 h-20 bg-deep-900/90 backdrop-blur border border-deep-700 rounded-xl p-3">
                     <div className="flex items-center gap-2 mb-2">
                       <Activity size={16} className="text-primary" />
-                      <span className="text-xs font-mono text-deep-300">IMU</span>
+                      <span className="text-xs font-mono text-deep-300">IMU & BARO</span>
                     </div>
                     <div className="flex gap-1">
                       {[1, 2, 3].map(i => (
@@ -95,7 +95,29 @@ export function Hero() {
                       ))}
                     </div>
                   </div>
-                  
+
+                  <div className="absolute top-4 right-4 w-32 h-20 bg-deep-900/90 backdrop-blur border border-deep-700 rounded-xl p-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Layers size={16} className="text-primary" />
+                      <span className="text-xs font-mono text-deep-300">Zephyr</span>
+                    </div>
+                    <div className="flex gap-1">
+                      {[1, 2, 3].map(i => (
+                        <div key={i} className="h-1.5 bg-deep-800 rounded flex-1" />
+                      ))}
+                    </div>
+                  </div>
+
+                  <div className="absolute bottom-4 left-4 w-32 h-20 bg-deep-900/90 backdrop-blur border border-deep-700 rounded-xl p-3">
+                    <div className="flex items-center gap-2 mb-2">
+                      <Smartphone size={16} className="text-primary" />
+                      <span className="text-xs font-mono text-deep-300">Flutter</span>
+                    </div>
+                    <div className="w-full bg-deep-800 rounded h-1.5">
+                      <div className="bg-primary h-1.5 rounded w-2/3 animate-pulse" />
+                    </div>
+                  </div>
+
                   <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-24 h-24 bg-gradient-to-br from-primary to-cyan-500/20 rounded-full flex items-center justify-center">
                     <span className="text-2xl font-bold text-white">MINT</span>
                   </div>

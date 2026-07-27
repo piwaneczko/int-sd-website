@@ -1,5 +1,7 @@
 import React from 'react'
 import { MINTSection } from '../components/sections/mint-section'
+import { MintTimelineSection } from '../components/sections/mint-timeline-section'
+import { MintAppSection } from '../components/sections/mint-app-section'
 import { Features } from '../components/sections/features'
 import { Container, Section } from '../components/layout/container'
 
@@ -10,12 +12,18 @@ export function MINTPage() {
         <Container>
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">MINT</h1>
-            <p className="text-primary text-lg">Micro Inertial Navigation Technology</p>
+            <p className="text-primary text-lg">Micro Inertial Navigation Tracker</p>
           </div>
           <MINTSection />
         </Container>
       </Section>
-      <Section className="bg-deep-900/50">
+      <Section>
+        <Container>
+          <MintTimelineSection />
+        </Container>
+      </Section>
+      <MintAppSection />
+      <Section>
         <Container>
           <Features />
         </Container>
