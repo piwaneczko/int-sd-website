@@ -16,14 +16,15 @@ import { TermsPage } from './pages/Terms'
 import { MintChangelogPage } from './pages/MintChangelog'
 import './styles/tailwind.css'
 
-function App() {
+// Everything that needs a Router context, split out so it can be mounted
+// under either BrowserRouter (client) or StaticRouter (build-time prerender).
+export function AppShell() {
   return (
-    <LanguageProvider>
-    <BrowserRouter>
+    <>
       <ScrollToTop />
       <div className="min-h-screen bg-deep-900 text-white font-sans">
         <Navbar />
-        
+
         <main className="pt-16">
           <Routes>
             <Route path="/" element={<Home />} />
@@ -38,10 +39,19 @@ function App() {
             <Route path="/terms" element={<TermsPage />} />
           </Routes>
         </main>
-        
+
         <Footer />
       </div>
-    </BrowserRouter>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <LanguageProvider>
+      <BrowserRouter>
+        <AppShell />
+      </BrowserRouter>
     </LanguageProvider>
   )
 }
