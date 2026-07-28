@@ -9,7 +9,10 @@
     "preview": "vite preview",
     "deploy": "./deploy.sh",
     "deploy:win": "./deploy.ps1",
-    "deploy:recipes": "rsync -avz public/recipes.json synology:/volume1/web/recipes.json"
+    "deploy:recipes": "rsync -avz public/recipes.json synology:/volume1/web/recipes.json",
+    "mint-changelog:pull": "node scripts/mint-changelog/pull.mjs",
+    "mint-changelog:build": "node scripts/mint-changelog/build.mjs",
+    "mint-changelog": "npm run mint-changelog:pull && npm run mint-changelog:build"
   },
   "dependencies": {
     "@emailjs/browser": "^4.4.1",

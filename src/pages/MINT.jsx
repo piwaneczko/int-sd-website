@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { MINTSection } from '../components/sections/mint-section'
 import { MintTimelineSection } from '../components/sections/mint-timeline-section'
 import { MintAppSection } from '../components/sections/mint-app-section'
@@ -22,6 +23,9 @@ export function MINTPage() {
               <span className="text-sm text-primary font-medium">{m.statusLabel}</span>
             </div>
             <p className="text-deep-400 max-w-xl mx-auto text-sm">{m.statusText}</p>
+            <Link to="/mint/changelog" className="inline-block mt-4 text-primary text-sm hover:text-cyan-400 transition-colors">
+              {t.mintChangelog.navLabel} →
+            </Link>
           </div>
           <MINTSection />
         </Container>

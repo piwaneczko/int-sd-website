@@ -46,6 +46,9 @@ tmp/
 temp/
 *.tmp
 
+# MINT changelog pipeline (fetched from a sibling repo, never committed raw)
+scripts/mint-changelog/raw/
+
 # Deploy
 deploy.log
 .env

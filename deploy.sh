@@ -32,6 +32,17 @@ log_warning() {
     echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] WARNING:${NC} $1"
 }
 
+# Refresh the public MINT changelog from the sibling ../mint checkout, if
+# present. This only copies raw internal CHANGELOG.md files into a gitignored
+# scratch dir and re-renders the curated, public-safe data file consumed by
+# the site (src/data/mint-changelog.json) — it never touches ../mint itself.
+if [ -d "../mint" ]; then
+    log "Refreshing MINT changelog from ../mint..."
+    npm run mint-changelog
+else
+    log_warning "../mint not found — skipping changelog refresh, using existing src/data/mint-changelog.json"
+fi
+
 # Always build before deploy
 log "Building project..."
 npm run build

@@ -13,6 +13,7 @@ import { ContactPage } from './pages/Contact'
 import { CookbookPage } from './pages/Cookbook'
 import { PrivacyPage } from './pages/Privacy'
 import { TermsPage } from './pages/Terms'
+import { MintChangelogPage } from './pages/MintChangelog'
 import './styles/tailwind.css'
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/mint" element={<MINTPage />} />
+            <Route path="/mint/changelog" element={<MintChangelogPage />} />
             <Route path="/about" element={<AboutPage />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/portfolio" element={<PortfolioPage />} />

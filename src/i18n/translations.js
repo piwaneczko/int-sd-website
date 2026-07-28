@@ -97,6 +97,14 @@ export const translations = {
         { title: 'Inżynier (BE)', detail: 'Politechnika Śląska, 10/2007 – 01/2011', note: '„Autonomous control of unmanned aerial vehicle in Prepar3D"' },
       ],
     },
+    mintChangelog: {
+      navLabel: 'Changelog MINT',
+      title: 'Historia zmian MINT',
+      subtitle: 'Najważniejsze kamienie milowe w rozwoju firmware i aplikacji towarzyszącej MINT.',
+      badgeFirmware: 'Firmware',
+      badgeApp: 'Aplikacja',
+      back: '← Wróć do MINT',
+    },
     contact: {
       title: 'Kontakt', subtitle: 'Chcesz współpracować? Napisz do mnie!',
       labelName: 'Imię', labelEmail: 'Email', labelSubject: 'Temat', labelMessage: 'Wiadomość',
@@ -255,6 +263,14 @@ export const translations = {
         { title: 'Master of Science (MSc)', detail: 'Silesian University of Technology, 02/2011 – 09/2012', note: '"Management and control of UAV group"' },
         { title: 'Bachelor of Engineering (BE)', detail: 'Silesian University of Technology, 10/2007 – 01/2011', note: '"Autonomous control of unmanned aerial vehicle in Prepar3D"' },
       ],
+    },
+    mintChangelog: {
+      navLabel: 'MINT Changelog',
+      title: 'MINT Changelog',
+      subtitle: 'Key milestones in the development of MINT firmware and its companion app.',
+      badgeFirmware: 'Firmware',
+      badgeApp: 'App',
+      back: '← Back to MINT',
     },
     contact: {
       title: 'Contact', subtitle: 'Want to collaborate? Get in touch!',

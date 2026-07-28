@@ -1,0 +1,567 @@
+[
+  {
+    "date": "2026-07-22",
+    "version": "1.0.7",
+    "component": "firmware",
+    "title": "Enhance orientation tracking, add telemetry support, and simplify settings",
+    "sections": {
+      "Added": [
+        "New Mahony orientation filter, offered as an alternative to the existing Madgwick filter",
+        "Orientation calibration can now be triggered and configured directly over BLE",
+        "Telemetry can be switched between a lightweight step-counter-only mode and full sensor streaming"
+      ],
+      "Changed": [
+        "Reworked calibration internals behind a single, swappable orientation-filter wrapper",
+        "Cleaned up unused BLE configuration left over from earlier releases",
+        "The release process now validates the version number and checks the changelog before a release is tagged"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-22",
+    "version": "1.0.10",
+    "component": "app",
+    "title": "Enhance map, navigation, and settings features for a better user experience",
+    "sections": {
+      "Added": [
+        "Satellite imagery toggle on the map",
+        "Orientation-filter algorithm is now configurable from the app",
+        "Device names are now cached, speeding up the scan screen"
+      ],
+      "Changed": [
+        "General map screen and OpenStreetMap integration improvements",
+        "Cleaned up the orientation-filter settings and removed unused options",
+        "Improved how trail recording tracks state and step count"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-07",
+    "version": "1.0.9",
+    "component": "app",
+    "title": "Enhance location search, device naming, and camera functionality",
+    "sections": {
+      "Added": [
+        "Location search on the map, from a new toolbar button"
+      ],
+      "Changed": [
+        "The app now consistently shows a device's saved name instead of its raw Bluetooth name",
+        "Updated the app icon and added map-matching for smoother on-map positioning",
+        "The map now centers on your GPS location once on launch, and stays put afterward instead of re-centering every time you revisit the Map tab or Settings"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-06",
+    "version": "1.0.6",
+    "component": "firmware",
+    "title": "Improved app security, added navigation, and streamlined upload process",
+    "sections": {
+      "Changed": [
+        "Tightened BLE security and pairing behavior",
+        "Added a navigation service on the device and stopped accepting building floor-plan uploads over BLE — indoor mapping now lives entirely in the phone app"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-06",
+    "version": "1.0.8",
+    "component": "app",
+    "title": "Enhanced map features, improved navigation, and refactored codebase",
+    "sections": {
+      "Added": [
+        "More reliable fetching and rendering of indoor building outlines from OpenStreetMap",
+        "Recorded navigation sessions can now be replayed from a CSV file"
+      ],
+      "Changed": [
+        "Smoother camera movement and building-highlight rendering on the map",
+        "Faster, per-tile building-data caching with proper cancellation of stale requests",
+        "Clearer status messages while the map loads data"
+      ],
+      "Fixed": [
+        "Fixed inconsistent building-data caching that could show stale results",
+        "Fixed the camera position and edit-mode preview not restoring correctly"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-03",
+    "version": "1.0.5",
+    "component": "firmware",
+    "title": "Enhance sensor accuracy, simplify controls, and improve BLE performance",
+    "sections": {
+      "Added": [
+        "Local gravity reference is now configurable over BLE and used by the step detector for more accurate step counting",
+        "New magnetometer capture mode dedicated to calibration, with smoother handling throughout the flow",
+        "Accelerometer calibration support, with refined timing"
+      ],
+      "Changed": [
+        "Improved motion-detection thresholds and automatic zeroing for steadier readings when the device is at rest",
+        "Simplified and streamlined the internal BLE connection handling",
+        "Introduced the Madgwick orientation filter (later joined by Mahony in 1.0.7)"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-03",
+    "version": "1.0.7",
+    "component": "app",
+    "title": "Enhanced safety with reset confirmation dialog",
+    "sections": {
+      "Changed": [
+        "Resetting calibration now asks for confirmation first, to prevent accidental resets"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-03",
+    "version": "1.0.6",
+    "component": "app",
+    "title": "Enhanced navigation, improved calibration, and updated UI features",
+    "sections": {
+      "Added": [
+        "Live 3D route visualization while navigating, with drag-to-rotate and pinch-to-zoom",
+        "Auto-connect: the app now remembers and automatically reconnects to your last device on launch, with pull-to-refresh on the scan screen",
+        "All-new 6-position accelerometer calibration — lay the device on each of its six faces, in any order; automatic face detection removes a small factory offset that was tilting the gravity reference",
+        "Calibration now tracks how much of the \"coverage sphere\" you've rotated through and ends automatically once it's covered enough, replacing the old fixed-timer approach",
+        "New calibration quality checks reject bad results before they reach the device, with a \"Fit quality\" panel showing any warnings",
+        "Visual guidance during calibration: on-screen markers show which directions still need coverage, plus a depth cue for the live sensor reading",
+        "Renamed the \"Orientation\" tab to \"Visualization\" and merged it with a new Navigation section",
+        "GPS logging, for easier field debugging"
+      ],
+      "Changed": [
+        "Alignment calibration now iterates to convergence and automatically discards noisy samples, meaningfully improving accuracy and repeatability",
+        "Calibration results are now verified by reading them back from the device before confirming success, instead of trusting the write blindly",
+        "Magnetometer data sent over Bluetooth was rescaled for ~10x finer precision — **requires updating the app and firmware together**",
+        "Migrated the map from flutter_map to MapLibre for smoother rendering and building overlays",
+        "General Bluetooth connection, firmware-version comparison, and data-handling improvements"
+      ],
+      "Removed": [
+        "Editable calibration-duration setting — superseded by automatic coverage-based completion"
+      ],
+      "Fixed": [
+        "Fixed a magnetometer calibration bug where the computed heading correction was inverted, doubling the actual heading error",
+        "Fixed a related math bug that could, in rare cases, save invalid calibration data to the device",
+        "\"Clear route\" in navigation no longer needs a second tap and no longer draws a stray line",
+        "Fixed several smaller display bugs: the live calibration dot, position/CSV units, and a Bluetooth race condition when clearing a route"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-01",
+    "version": "1.0.4",
+    "component": "firmware",
+    "title": "OTA image-versioning fix",
+    "sections": {
+      "Fixed": [
+        "Fixed OTA updates occasionally failing their final verification step: every released image now carries a real, distinct version number instead of a placeholder, so the device can always tell a new image apart from the one already running"
+      ],
+      "Changed": [
+        "The release process now bakes the chosen version straight into the firmware image before building, so every release is uniquely identifiable"
+      ],
+      "Added": [
+        "Releases can now include an optional build-number suffix, making it possible to re-publish the same version with a fresh, testable image without bumping the version number"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-07-01",
+    "version": "1.0.3",
+    "component": "firmware",
+    "title": "Calibration and position fixes",
+    "sections": {
+      "Added": [
+        "Raw, uncalibrated magnetometer readings are now always available over BLE — useful for diagnostics and calibration tooling"
+      ],
+      "Changed": [
+        "Reorganized the BLE telemetry layout for clarity, with expanded documentation in the README",
+        "Dead-reckoning position is now reported as fine-grained, continuously accumulated distance instead of coarse integer steps",
+        "Step detection now buffers internally so every detected step is guaranteed to be reported exactly once, even under bursty BLE traffic"
+      ],
+      "Fixed": [
+        "Improved reported position precision over BLE, down to 1 mm resolution"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-30",
+    "version": "1.0.2",
+    "component": "firmware",
+    "title": "Mag calibration improvements",
+    "sections": {
+      "Added": [
+        "New magnetometer calibration data can now be pushed to the device over BLE and takes effect immediately, with no restart required"
+      ],
+      "Changed": [
+        "Reorganized how calibration is loaded internally so the device reliably picks up new calibration data as soon as it's written"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-30",
+    "version": "1.0.5",
+    "component": "app",
+    "title": "Implemented fetching NOAA (World Magnetic Model) declination and magnetic field",
+    "sections": {
+      "Added": [
+        "The app now fetches your local declination and magnetic field strength from the NOAA World Magnetic Model, shown in a new info widget"
+      ],
+      "Changed": [
+        "Calibration now uses this real-world geomagnetic reference for improved accuracy"
+      ],
+      "Fixed": [
+        "Various minor bug fixes and improvements"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-30",
+    "version": "1.0.4",
+    "component": "app",
+    "title": "Changed map to 3D only MapLibre and calibration improvements",
+    "sections": {
+      "Added": [
+        "3D buildings now render on the map, extruded from real OpenStreetMap footprints"
+      ],
+      "Changed": [
+        "Migrated the map engine to MapLibre for better 3D rendering and overlay support",
+        "The release script can now overwrite an existing version tag when needed"
+      ],
+      "Fixed": [
+        "The calibration scatter plot now always starts empty when you open the Calibration tab, instead of showing leftover points from a previous session",
+        "Typed calibration/route/floor-height values are now saved when you tap away, not only on keyboard submit",
+        "Fixed a crash when leaving the Map tab, caused by the map controller being disposed twice"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-29",
+    "version": "1.0.1",
+    "component": "firmware",
+    "title": "Write-only mag calibration data, OTA security level fix",
+    "sections": {
+      "Added": [
+        "The status LED now reflects OTA update progress in real time"
+      ],
+      "Changed": [
+        "Briefly raised the security level required for firmware updates, then reverted it — this device pairs without a screen or PIN, and the higher level would have locked updates out entirely",
+        "Firmware-update permissions now correctly match the device's actual pairing security level"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-29",
+    "version": "1.0.3",
+    "component": "app",
+    "title": "Calibration UI and versioned builds",
+    "sections": {
+      "Added": [
+        "New calibration settings screen with a live magnetometer monitor"
+      ],
+      "Changed": [
+        "More accurate two-pass alignment calibration algorithm",
+        "Improved the ellipsoid and hard-iron calibration math"
+      ],
+      "Fixed": [
+        "Fixed OTA firmware updates hanging or timing out: improved the update protocol's data handling, added retries, and reordered the update steps for reliability",
+        "Fixed the OTA screen layout and calibration marker position",
+        "Fixed the firmware-update manifest pointing to the wrong URL"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-29",
+    "version": "1.0.2",
+    "component": "app",
+    "title": "OTA website uri fix",
+    "sections": {
+      "Added": [
+        "New calibration cards UI with a live 3D scatter plot, auto-countdown, and the ability to delete a capture and retry",
+        "App version is now derived automatically from the release git tag"
+      ],
+      "Changed": [
+        "Improved the ellipsoid and hard-iron calibration algorithms",
+        "Cleaned up Bluetooth connection handling"
+      ],
+      "Fixed": [
+        "Fixed raw magnetometer display and the 3D wireframe orientation view",
+        "Fixed the OTA screen layout and calibration marker position"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-27",
+    "version": "1.0.0",
+    "component": "firmware",
+    "title": "OTA firmware updates and full magnetometer calibration",
+    "sections": {
+      "Added": [
+        "Wireless firmware updates over BLE, using the industry-standard MCUmgr protocol — no cable required to update the device",
+        "A full 3-matrix magnetometer calibration pipeline, replacing the earlier simple offset correction, with calibrated readings now exposed live in telemetry",
+        "An interactive release script and a version number derived straight from the git tag, so every build is traceable",
+        "Migrated the build to a sysbuild project (bootloader and application are now built and signed together)"
+      ],
+      "Changed": [
+        "Improved gyroscope bias estimation right after power-on, for more accurate readings from a cold start",
+        "Improved sensor math and BLE service handling throughout the telemetry pipeline",
+        "Added step-length calibration over BLE",
+        "Power-saving mode is now on by default and configurable at runtime",
+        "Renamed \"building height\" to \"floor count\" for clarity",
+        "Added LE Secure Connections and a standard Bluetooth Device Information Service"
+      ],
+      "Fixed": [
+        "Extended the hard-iron magnetometer calibration duration for a more reliable fit",
+        "Improved reported position precision (down to 1 mm) and widened its data range",
+        "Fixed a Bluetooth device-filtering configuration bug"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-26",
+    "version": "1.0.1",
+    "component": "app",
+    "title": "Calibration fixes and OTA update",
+    "sections": {
+      "Added": [
+        "Wireless (OTA) firmware updates, straight from the app",
+        "3D ball-and-stick visualization of device orientation",
+        "Redesigned navigation: building outlines, start/stop control, and loop-closure detection",
+        "Indoor step-based navigation using OpenStreetMap building data",
+        "Power-save mode, enabled by default",
+        "Windows desktop support"
+      ],
+      "Changed": [
+        "Simplified and hardened Bluetooth connection handling on Linux, with a watchdog that reconnects automatically if telemetry stalls"
+      ],
+      "Fixed": [
+        "Fixed various Bluetooth connection and map/navigation rendering issues"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-24",
+    "version": "1.0.0",
+    "component": "app",
+    "title": "Initial release: calibration, orientation, and map visualization",
+    "sections": {
+      "Added": [
+        "First release: full 3-matrix magnetometer calibration, live 3D orientation visualization, and map integration with OpenStreetMap"
+      ],
+      "Changed": [
+        "Dependency and build-system updates"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-12",
+    "version": "0.3.0",
+    "component": "firmware",
+    "title": "Navigation foundations: calibration and dead-reckoning",
+    "sections": {
+      "Added": [
+        "IMU calibration and dead-reckoning position tracking — the foundation of the device's step-based navigation",
+        "BLE controller and sensor telemetry services stood up for the first time",
+        "A configurable limit on how many phones can be paired to the device at once",
+        "Documented the BLE data layout in the README"
+      ],
+      "Changed": [
+        "Reduced magnetometer calibration time",
+        "Simplified battery-charger logic and LED brightness handling; battery voltage is now monitored directly",
+        "Simplified beacon and power-manager start-up"
+      ],
+      "Fixed": [
+        "Fixed a Bluetooth privacy setting so the device is correctly recognized on reconnect",
+        "Fixed an internal pairing-state bug that could misreport pairing failures"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-10",
+    "version": "0.2.0",
+    "component": "firmware",
+    "title": "BLE services and first magnetometer calibration",
+    "sections": {
+      "Added": [
+        "Core BLE services stood up: device configuration, telemetry, and step count, plus a standard Battery Service and Bluetooth bonding support",
+        "First working magnetometer calibration",
+        "Dead-reckoning position now included in the telemetry stream"
+      ],
+      "Changed": [
+        "Widened the position data range in telemetry",
+        "Cleaned up outdated documentation"
+      ],
+      "Fixed": [
+        "Fixed a Bluetooth device-filtering bug and five other correctness issues found in code review",
+        "Fixed an internal pairing-state bug"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-09",
+    "version": "0.1.0",
+    "component": "firmware",
+    "title": "Wake-on-motion sensor bring-up",
+    "sections": {
+      "Added": [
+        "New motion-sensor driver with wake-on-motion support, letting the device sleep until it's actually moved",
+        "Refined LED animations, battery-charger state handling, and heartbeat timing"
+      ],
+      "Fixed": [
+        "Tuned the new motion sensor's wake-on-motion detection settings"
+      ]
+    },
+    "prose": []
+  },
+  {
+    "date": "2026-06-08",
+    "version": "0.0.5",
+    "component": "firmware",
+    "title": "nRF Connect SDK bring-up",
+    "sections": {
+      "Added": [
+        "Full nRF Connect SDK project configuration: build tasks, debugger/RTT terminal integration, erase-and-flash task",
+        "BLE stack enabled together with IMU data handling",
+        "Battery charger state-machine logic",
+        "LED driver with PWM support, including PWM control for the red status LED",
+        "Unit tests for the `Vector` and `Quaternion` math classes (Google Test)"
+      ],
+      "Changed": [
+        "Application layer refactored into modules (`src/app/...`) — the structure the codebase still uses today",
+        "Barometer pressure reading corrected from kPa to hPa",
+        "ADC settings refactored for improved battery-voltage measurement accuracy",
+        "Device version bumped to 2.4.0 for reproducible flash/recovery behavior"
+      ],
+      "Removed": [
+        "Unused sensor and performance-timer code left over from the STM32 prototype"
+      ]
+    },
+    "prose": [
+      "Direct lead-in to `v0.1.0`: first commit after ~1 year of repository inactivity",
+      "(previous commit `a11bf4b` was 2025-05-17)."
+    ]
+  },
+  {
+    "date": "2025-05-17",
+    "version": "0.0.4",
+    "component": "firmware",
+    "title": "Platform migration: STM32 → nRF52840 (Zephyr / NCS)",
+    "sections": {
+      "Changed": [
+        "**Platform migration**: the STM32WB55 codebase was retired and the project restarted on **nRF52840** using **Zephyr / nRF Connect SDK** — the architecture the product still uses",
+        "Board bring-up re-implemented on the new platform: GPIO, LED, and button drivers as Zephyr-style classes",
+        "SPI sensor drivers re-implemented using Zephyr devicetree (DTS) bindings instead of hand-rolled STM32 HAL code",
+        "Logging switched to the Zephyr logging API; Segger RTT console enabled for on-target debug output, replacing the STM32-era USB/UART logging"
+      ],
+      "Added": [
+        "Google Test unit-testing submodule integrated for host-side testing",
+        "Standard (non-minimal) build configuration profile"
+      ],
+      "Fixed": [
+        "LED now blinks 3 times on an init error, as a hardware-level fault indicator"
+      ]
+    },
+    "prose": [
+      "Spans 2024-12-13 to 2025-05-17. No commits exist between 2023-11-14 (`v0.0.3`)",
+      "and 2024-12-13 (~13 months)."
+    ]
+  },
+  {
+    "date": "2023-11-14",
+    "version": "0.0.3",
+    "component": "firmware",
+    "title": "STM32WB55 mainboard hardware maturation",
+    "sections": {
+      "Added": [
+        "Barometer (ICP10125) driver template, plus device-address and reading-error fixes",
+        "CRC-8 MAXIM implementation with unit tests; test tree moved to its own directory",
+        "USB DFU (firmware update over USB) implemented (FS-mode DFU, `USBD_FS`)",
+        "SWO/ITM hardware debugging support; UART removed in favor of it",
+        "ADC class with DMA support, HAL timeout tuning, and dedicated error handling"
+      ],
+      "Changed": [
+        "Switched target MCU to the STM32WB55VGY variant; updated linker for the extended wireless stack",
+        "I2C driver changed to explicit MasterTX/MasterRX transfers",
+        "Logging interface refactored from SCI to RSCI"
+      ],
+      "Fixed": [
+        "SPI implementation issues surfaced after integrating it with the rest of the firmware",
+        "DMA receive corruption on I2C; unused DMA channels removed"
+      ]
+    },
+    "prose": [
+      "Spans 2023-09-07 to 2023-11-14, on the \"mainboard\" PCB revision. No commits",
+      "exist between 2023-07-26 (`v0.0.2`) and 2023-09-07 (~6 weeks)."
+    ]
+  },
+  {
+    "date": "2023-07-26",
+    "version": "0.0.2",
+    "component": "firmware",
+    "title": "BLE beacon + AHRS filter",
+    "sections": {
+      "Added": [
+        "BLE beacon implementation (`beacon.cpp`) — iterated from AltBeacon, to an ST proprietary format, and finally to iBeacon with legacy + extended advertising",
+        "Madgwick AHRS orientation filter — first quaternion/Euler-angle implementation with sensor-fusion timing",
+        "Task runner utility",
+        "Barometer: initial documentation and error handling",
+        "USB peripheral bring-up (groundwork for the DFU support added in `v0.0.3`)",
+        "Project configuration for the production \"mainboard\" PCB schematic"
+      ],
+      "Changed": [
+        "Reimplemented the non-autoincrementing SPI read path and fixed SPI buffer handling",
+        "Corrected accelerometer/gyroscope scale",
+        "Magnetometer moved to I2C with normalization",
+        "STM32CubeMX/STM32CubeIDE toolchain updated to 1.13",
+        "RTC wakeup enabled"
+      ]
+    },
+    "prose": [
+      "Spans 2023-06-25 to 2023-07-26. No commits exist between 2023-01-30 (`v0.0.1`)",
+      "and 2023-06-25 (~5 months)."
+    ]
+  },
+  {
+    "date": "2023-01-30",
+    "version": "0.0.1",
+    "component": "firmware",
+    "title": "Initial STM32WB55 bring-up",
+    "sections": {
+      "Added": [
+        "Initial STM32CubeIDE project scaffold for the STM32WB55, with BLE package configured",
+        "I2C class, then migrated to a common I2C/SPI interface (settled on SPI for the IMU/magnetometer after early I2C reliability issues)",
+        "IMU (accelerometer + gyroscope) bring-up with register-bank configuration",
+        "Magnetometer enabled over I2C",
+        "ADC driver and independent watchdog",
+        "Custom class-based logging framework, usable from a Linux terminal",
+        "RTC, IPCC, and basic LED/input handling"
+      ],
+      "Changed": [
+        "STM32Cube sources updated to version 1.11.0"
+      ]
+    },
+    "prose": [
+      "Spans 2022-12-28 to 2023-01-30, the project's first commits."
+    ]
+  }
+]
