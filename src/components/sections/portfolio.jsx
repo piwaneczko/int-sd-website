@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { Card, CardContent, CardFooter } from '../ui/card'
 import { Button } from '../ui/button'
 
@@ -30,6 +31,7 @@ export function Portfolio() {
                 <img
                   src={project.image}
                   alt={project.title}
+                  loading="lazy"
                   className="w-full h-full object-contain p-8 opacity-80 group-hover:opacity-100 transition-opacity duration-300"
                   onError={(e) => {
                     e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(project.title)}&background=1a1a2e&color=fff&size=128`
@@ -53,12 +55,12 @@ export function Portfolio() {
               </CardContent>
               
               <CardFooter className="flex justify-between items-center">
-                <a 
-                  href="#" 
+                <Link
+                  to="/mint"
                   className="text-primary text-sm font-medium hover:text-cyan-400 transition-colors"
                 >
                   Zobacz szczegóły →
-                </a>
+                </Link>
                 <Button variant="outline" size="sm">GitHub</Button>
               </CardFooter>
             </Card>

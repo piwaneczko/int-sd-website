@@ -56,6 +56,7 @@ export function MintAppSection() {
                 <img
                   src={screenshots[index]}
                   alt={screen.caption}
+                  loading="lazy"
                   className="w-full h-full object-cover"
                   onError={(e) => {
                     e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(screen.caption)}&background=1a1a2e&color=fff&size=128`

@@ -7,17 +7,17 @@ function buildMedia(m) {
     // HW v0 – render (KiCad) + zdjęcie wyprodukowanej płytki
     [
       { src: '/images/mint-hw-v0-render.png', label: m.mediaRender },
-      { src: '/images/mint-hw-v0-photo.jpg', label: m.mediaPhoto },
+      { src: '/images/mint-hw-v0-photo.webp', label: m.mediaPhoto },
     ],
     // HW v1 – render (KiCad) + zdjęcie wyprodukowanej płytki
     [
       { src: '/images/mint-hw-v1-render.png', label: m.mediaRender },
-      { src: '/images/mint-hw-v1-photo.jpg', label: m.mediaPhoto },
+      { src: '/images/mint-hw-v1-photo.webp', label: m.mediaPhoto },
     ],
     // Obudowa v1 – render (FreeCAD) + zdjęcie wyprodukowanej obudowy
     [
       { src: '/images/mint-case-v1-render.png', label: m.mediaRender, fit: 'contain'  },
-      { src: '/images/mint-case-v1-photo.jpg', label: m.mediaPhoto },
+      { src: '/images/mint-case-v1-photo.webp', label: m.mediaPhoto },
     ],
     // Firmware v1 (w trakcie) – zrzut z VSCode z debugiem RTT
     [

@@ -52,6 +52,7 @@ export function Timeline({ items }) {
                         <img
                           src={media.src}
                           alt={item.title}
+                          loading="lazy"
                           className={`w-full h-full ${media.fit === 'contain' ? 'object-contain' : 'object-cover'}`}
                           onError={(e) => {
                             e.target.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(item.title)}&background=1a1a2e&color=fff&size=128`
