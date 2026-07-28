@@ -1,7 +1,6 @@
 import React from 'react'
-import { Button } from '../ui/button'
 import { Timeline } from '../ui/timeline'
-import { GraduationCap, Briefcase, Download } from 'lucide-react'
+import { GraduationCap, Briefcase } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
 
 const techStack = [
@@ -47,15 +46,6 @@ export function About() {
                 <a href="https://www.linkedin.com/in/pawel-iwaneczko-61590710a/" target="_blank" rel="noopener noreferrer"
                   className="px-4 py-2 bg-deep-800 text-white rounded-lg text-sm font-medium hover:bg-deep-700 transition-colors">LinkedIn</a>
               </div>
-            </div>
-
-            <div className="text-center lg:text-left">
-              <a href="/cv-pawel-iwaneczko.pdf" download="CV Paweł Iwaneczko.pdf">
-                <Button variant="secondary" className="w-full lg:w-auto">
-                  <Download className="mr-2" size={18} />
-                  {a.btnCV}
-                </Button>
-              </a>
             </div>
 
             <div>
