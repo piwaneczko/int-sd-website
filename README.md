@@ -1,6 +1,6 @@
 # I.N.T. Software Development - Website
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg)
+![License](https://img.shields.io/badge/license-All%20rights%20reserved-lightgrey.svg)
 ![React](https://img.shields.io/badge/react-%5E18.2.0-blue.svg)
 ![Vite](https://img.shields.io/badge/vite-%5E5.0.0-blue.svg)
 ![TailwindCSS](https://img.shields.io/badge/tailwind-%5E3.4.0-blue.svg)
@@ -220,7 +220,8 @@ colors: {
 
 ## 📄 License
 
-MIT License - see `LICENSE` or `LICENSE.md` file
+All rights reserved — see `LICENSE`. This is proprietary company code, not
+an open-source project.
 
 ---
 
