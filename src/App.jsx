@@ -11,6 +11,8 @@ import { ServicesPage } from './pages/Services'
 import { PortfolioPage } from './pages/Portfolio'
 import { ContactPage } from './pages/Contact'
 import { CookbookPage } from './pages/Cookbook'
+import { PrivacyPage } from './pages/Privacy'
+import { TermsPage } from './pages/Terms'
 import './styles/tailwind.css'
 
 function App() {
@@ -30,6 +32,8 @@ function App() {
             <Route path="/portfolio" element={<PortfolioPage />} />
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/cookbook" element={<CookbookPage />} />
+            <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/terms" element={<TermsPage />} />
           </Routes>
         </main>
         

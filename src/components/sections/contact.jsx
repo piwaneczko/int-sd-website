@@ -148,7 +148,7 @@ export function Contact() {
                 </div>
                 <div>
                   <div className="text-sm text-deep-400">Email</div>
-                  <div className="text-white font-medium">p.iwaneczko@gmail.com</div>
+                  <div className="text-white font-medium">{c.email}</div>
                 </div>
               </Card>
 
@@ -171,8 +171,8 @@ export function Contact() {
               <div className="space-y-6">
                 <div>
                   <label className="block text-sm font-medium text-deep-400 mb-2">Email</label>
-                  <a href="mailto:p.iwaneczko@gmail.com" className="text-white text-lg hover:text-primary transition-colors">
-                    p.iwaneczko@gmail.com
+                  <a href={`mailto:${c.email}`} className="text-white text-lg hover:text-primary transition-colors">
+                    {c.email}
                   </a>
                 </div>
                 <div>

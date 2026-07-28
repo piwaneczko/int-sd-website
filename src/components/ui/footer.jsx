@@ -51,7 +51,7 @@ export function Footer() {
             <div className="flex space-x-4">
               <a href="https://github.com/piwaneczko" className="text-deep-400 hover:text-primary transition-colors"><Github size={20} /></a>
               <a href="https://www.linkedin.com/in/pawel-iwaneczko-61590710a/" className="text-deep-400 hover:text-primary transition-colors"><Linkedin size={20} /></a>
-              <a href="mailto:p.iwaneczko@gmail.com" className="text-deep-400 hover:text-primary transition-colors"><Mail size={20} /></a>
+              <a href={`mailto:${f.legalEmail}`} className="text-deep-400 hover:text-primary transition-colors"><Mail size={20} /></a>
             </div>
           </div>
 
@@ -70,6 +70,15 @@ export function Footer() {
               </ul>
             </div>
           ))}
+        </div>
+
+        {/* Legal / registry data */}
+        <div className="border-t border-deep-800 pt-8 pb-8 text-deep-500 text-xs leading-relaxed space-y-1">
+          <p className="text-deep-400 font-medium mb-2">{f.legalTitle}</p>
+          <p>{f.legalName}</p>
+          <p>{f.legalNip} · {f.legalRegon}</p>
+          <p>{f.legalAddress}</p>
+          <p>{f.legalEmail}</p>
         </div>
 
         {/* Bottom */}
