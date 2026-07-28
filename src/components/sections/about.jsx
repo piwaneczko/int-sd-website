@@ -17,11 +17,9 @@ export function About() {
   const { t } = useLanguage()
   const a = t.about
 
-  const experience = a.experience.map((e, i) => ({
-    ...e,
-    desc: e.desc,
-    icon: i === 3 ? <GraduationCap /> : <Briefcase />,
-  }))
+  const withIcon = (e) => ({ ...e, icon: e.phd ? <GraduationCap /> : <Briefcase /> })
+  const b2bWork = a.experience.filter(e => e.b2b).map(withIcon)
+  const historyWork = a.experience.filter(e => !e.b2b).map(withIcon)
 
   return (
     <section className="py-20 bg-deep-900/50">
@@ -83,7 +81,16 @@ export function About() {
           <div className="lg:col-span-2 space-y-10">
             <div>
               <h3 className="text-2xl font-bold text-white mb-6">{a.expTitle}</h3>
-              <Timeline items={experience} />
+              <Timeline items={b2bWork} />
+
+              <div className="flex items-center gap-3 my-6">
+                <div className="h-px flex-1 bg-deep-700/50" />
+                <span className="text-xs text-deep-500 uppercase tracking-wider">{a.foundingNote}</span>
+                <div className="h-px flex-1 bg-deep-700/50" />
+              </div>
+
+              <h3 className="text-lg font-semibold text-deep-300 mb-6">{a.historyTitle}</h3>
+              <Timeline items={historyWork} />
             </div>
 
             <div className="p-6 bg-deep-800/30 rounded-2xl border border-deep-700/50">
