@@ -7,9 +7,15 @@
 
 ## 📖 About Project
 
-This is a modern website for **Int Software Development** - Paweł Iwaneczko, showcasing expertise in:
-- 💻 Software Development
-- 🔧 Embedded Systems
+This is the corporate website of **I.N.T. Software Development**, a B2B
+embedded/Linux/IoT engineering business that also develops **MINT** (Micro
+Inertial Navigation Tracker), an independent inertial-navigation product
+(nRF52 firmware + a Flutter companion app). The site presents the company's
+service offering and the MINT product, including a public changelog for
+MINT's firmware and app releases.
+
+- 💻 Software Development (B2B contracts)
+- 🔧 Embedded Systems / Firmware
 - 🧭 Inertial Navigation (MINT)
 - 🌐 IoT
 - 🐧 Linux & System Programming
@@ -17,13 +23,7 @@ This is a modern website for **Int Software Development** - Paweł Iwaneczko, sh
 
 **Domain:** https://www.int-sd.net
 
-## 📝 Note on "Cookbook"
-
-The **Cookbook** section on the website is actually **"Recipes of Generations"** - a virtual collection of family and friend recipes (breakfasts, lunches, dinners, sweets, holidays). It is NOT a "Developer Cookbook" with technical guides.
-
-Access via:
-- Footer link: "Resources → Cookbook"
-- URL: `https://www.int-sd.net/cookbook`
+> The **Cookbook** section is an unrelated family recipe collection ("Recipes of Generations"), kept on the site for historical reasons — not developer documentation.
 
 ---
 
@@ -39,7 +39,7 @@ Access via:
 | Forms | EmailJS (`@emailjs/browser`) |
 | i18n | Custom (`src/i18n/translations.js` + `LanguageContext`) |
 
-> Note: `framer-motion` is listed in `package.json` but is not currently used anywhere in `src` — animations are done with plain CSS transitions/keyframes.
+> Animations are done with plain CSS transitions/keyframes, no animation library.
 
 ---
 
@@ -100,6 +100,7 @@ npm run preview
 | `npm run deploy` | Deploy to Synology via SSH (Linux/Mac/WSL) |
 | `npm run deploy:win` | Deploy to Synology from Windows — runs `deploy.sh` inside WSL |
 | `npm run deploy:recipes` | Sync only `public/recipes.json` to Synology |
+| `npm run mint-changelog` | Refresh `src/data/mint-changelog.json` from `../mint/*/CHANGELOG.md` (see below) |
 
 ---
 
@@ -143,11 +144,14 @@ npm run deploy:win
 |-----|------|
 | `/` | Home |
 | `/mint` | MINT - Micro Inertial Navigation Tracker |
-| `/about` | About Me |
+| `/mint/changelog` | MINT firmware & app release history |
+| `/about` | About / selected work |
 | `/services` | Services |
 | `/portfolio` | Projects |
 | `/contact` | Contact |
-| `/cookbook` | Recipes of Generations (family recipes) |
+| `/privacy` | Privacy policy (draft, pending legal review) |
+| `/terms` | Terms of service (draft, pending legal review) |
+| `/cookbook` | Recipes of Generations (unrelated family recipes) |
 
 ---
 
@@ -167,6 +171,26 @@ deploy` (e.g. via `rsync`), similar to `deploy:recipes`.
 
 ---
 
+## 🧾 MINT Changelog Pipeline
+
+`/mint/changelog` is built from the internal `CHANGELOG.md` files of the
+sibling `../mint/firmware` and `../mint/software` checkouts, not hand-written:
+
+```bash
+npm run mint-changelog:pull   # copy ../mint/*/CHANGELOG.md into scripts/mint-changelog/raw/ (gitignored)
+npm run mint-changelog:build  # parse them and write src/data/mint-changelog.json
+npm run mint-changelog        # both steps together
+```
+
+`deploy.sh` runs this automatically before building, and skips it (with a
+warning) if `../mint` isn't present on the machine. The parser
+(`scripts/mint-changelog/parse.mjs`) is a small, dependency-free parser
+tailored to these files' actual format, not a generic Keep a Changelog
+parser — the source files use `---` separators and a title suffix on the
+version header that trip up stricter parsers.
+
+---
+
 ## 🎨 Color Palette (Tailwind)
 
 ```javascript
@@ -182,41 +206,6 @@ colors: {
   }
 }
 ```
-
----
-
-## 📦 Performance
-
-| File | Size | Gzip |
-|------|------|------|
-| index.html | 1.06 kB | 0.57 kB |
-| styles.css | 27.52 kB | 5.37 kB |
-| main.js | 263.02 kB | 81.45 kB |
-
-*(Filenames are hashed by Vite at build time, e.g. `index-[hash].css` / `index-[hash].js` under `dist/assets/` — simplified above for readability. Numbers from the latest `npm run build`.)*
-
----
-
-## 📖 Cookbook (Recipes)
-
-The **Cookbook** (Recipes of Generations) section contains family recipes:
-
-| Category | Description |
-|----------|-------------|
-| 🥞 Breakfast | Morning dishes |
-| 🍽️ Lunch | Main meal |
-| 🍲 Dinner | Evening dishes |
-| 🍰 Sweets | Desserts and baked goods |
-| 🎂 Holidays | Holiday recipes |
-
-**Availability:**
-- Footer link: **Resources → Cookbook**
-- Direct URL: `/cookbook`
-
-**Tech Stack:**
-- React + Tailwind CSS
-- Category filtering
-- Expandable recipe cards
 
 ---
 
