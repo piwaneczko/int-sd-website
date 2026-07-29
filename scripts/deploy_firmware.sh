@@ -46,7 +46,11 @@ SIZE=$(stat -c%s "$OTA_DIR/firmware.bin" 2>/dev/null || stat -f%z "$OTA_DIR/firm
 
 # Update manifest (python3 builds the JSON so release notes with quotes/newlines
 # are escaped correctly).
-python3 - "$VERSION" "$SIZE" "$RELEASE_NOTES" > "$OTA_DIR/manifest.json" <<'PY'
+# Unset PYTHONHOME/PYTHONPATH: if the calling shell ran the NCS `ncs()` macro
+# without a matching `ncs-off`, they point at the toolchain's bundled Python
+# 3.12 stdlib, which mismatches system python3's compiled _sre extension and
+# aborts with "AssertionError: SRE module mismatch".
+env -u PYTHONHOME -u PYTHONPATH python3 - "$VERSION" "$SIZE" "$RELEASE_NOTES" > "$OTA_DIR/manifest.json" <<'PY'
 import json, sys
 version, size, notes = sys.argv[1], int(sys.argv[2]), sys.argv[3]
 print(json.dumps({

@@ -71,9 +71,12 @@ log "Deploying files to: $TARGET_HOST:$TARGET_PATH"
 # needed (and combined with --delete it would actively delete index.html and
 # assets/, since those don't exist under public/).
 # --delete removes files on the server that no longer exist locally (e.g. old
-# favicon, removed placeholders). ota/ is excluded from deletion because it's
-# gitignored and may not exist on every machine that runs a deploy.
-rsync -avz --delete --exclude='.gitkeep' --exclude='ota/' "$BUILD_DIR/" "$TARGET_HOST:$TARGET_PATH/"
+# favicon, removed placeholders). ota/ is merely PROTECTED from that deletion
+# (not excluded from transfer) because it's gitignored and may not exist on
+# every machine that runs a deploy — a plain --exclude would also block a
+# present dist/ota/ (e.g. built by scripts/deploy_firmware.sh) from ever being
+# uploaded, silently leaving the server's firmware.bin/manifest.json stale.
+rsync -avz --delete --exclude='.gitkeep' --filter='P /ota/' --filter='P /ota/**' "$BUILD_DIR/" "$TARGET_HOST:$TARGET_PATH/"
 
 # Log deployment
 echo "Deployment completed at $(date)" >> "$LOG_FILE"
