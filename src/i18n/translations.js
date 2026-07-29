@@ -119,7 +119,7 @@ export const translations = {
       msgErrorMessage: 'Proszę wpisać treść wiadomości',
       infoTitle: 'Dane kontaktowe',
       labelPhone: 'Telefon', labelAddress: 'Adres', address: 'Kędzierzyn-Koźle / Gliwice, Polska',
-      email: 'piwaneczko@gmail.com',
+      email: 'piwaneczko@int-sd.net',
       profilesTitle: 'Profile',
     },
     footer: {
@@ -133,7 +133,7 @@ export const translations = {
       legalNip: 'NIP: 7491980482',
       legalRegon: 'REGON: 523987659',
       legalAddress: 'ul. Wiktora Brzozowskiego 4, 47-232 Kędzierzyn-Koźle',
-      legalEmail: 'piwaneczko@gmail.com',
+      legalEmail: 'piwaneczko@int-sd.net',
     },
     legal: {
       draftBanner: 'Ten dokument jest szkicem do weryfikacji prawnej i nie stanowi porady prawnej. Wymaga potwierdzenia przez prawnika oraz uzupełnienia danych właściciela przed publikacją.',
@@ -286,7 +286,7 @@ export const translations = {
       msgErrorMessage: 'Please enter message content',
       infoTitle: 'Contact details',
       labelPhone: 'Phone', labelAddress: 'Address', address: 'Kędzierzyn-Koźle / Gliwice, Poland',
-      email: 'piwaneczko@gmail.com',
+      email: 'piwaneczko@int-sd.net',
       profilesTitle: 'Profiles',
     },
     footer: {
@@ -300,7 +300,7 @@ export const translations = {
       legalNip: 'Tax ID (NIP): 7491980482',
       legalRegon: 'REGON: 523987659',
       legalAddress: 'ul. Wiktora Brzozowskiego 4, 47-232 Kędzierzyn-Koźle, Poland',
-      legalEmail: 'piwaneczko@gmail.com',
+      legalEmail: 'piwaneczko@int-sd.net',
     },
     legal: {
       draftBanner: 'This document is a draft pending legal review and does not constitute legal advice. It requires confirmation by a lawyer and completion of the owner\'s details before publication.',
