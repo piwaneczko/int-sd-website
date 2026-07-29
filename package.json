@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/mint-changelog/ensure.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/mint-changelog/ensure.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "deploy": "./deploy.sh",
