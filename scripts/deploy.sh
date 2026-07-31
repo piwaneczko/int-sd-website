@@ -1,8 +1,26 @@
 #!/bin/bash
 # Deploy script for I.N.T. Software Development
 # Deploy target: synology:/volume1/web
+#
+# Usage: scripts/deploy.sh [-y|--yes]
+# Pass -y/--yes to skip the pre-deploy confirmation (used when this script is
+# called non-interactively, e.g. from scripts/release.sh).
 
 set -e
+
+# --- args -------------------------------------------------------------
+AUTO_YES=0
+for arg in "$@"; do
+  case "$arg" in
+    -y|--yes) AUTO_YES=1 ;;
+    *) echo "Unknown argument: $arg" >&2; exit 1 ;;
+  esac
+done
+
+# Run from the repo root regardless of the caller's cwd.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(dirname "$SCRIPT_DIR")"
+cd "$REPO_ROOT"
 
 echo "=========================================="
 echo "  I.N.T. Software Development - Deploy"
@@ -30,6 +48,18 @@ log_error() {
 
 log_warning() {
     echo -e "${YELLOW}[$(date '+%Y-%m-%d %H:%M:%S')] WARNING:${NC} $1"
+}
+
+# Answers a [Y/n] prompt. With -y/--yes, skips the read and answers "y"
+# (still logged, so the transcript shows what was decided and why).
+confirm() {
+    local prompt="$1" reply
+    if [ "$AUTO_YES" -eq 1 ]; then
+        log "${prompt} [Y/n]: y (auto, -y)"
+        return 0
+    fi
+    read -rp "${prompt} [Y/n]: " reply
+    [[ -z "$reply" || "$reply" =~ ^[Yy]$ ]]
 }
 
 # Refresh the public MINT changelog from the sibling ../mint checkout, if
@@ -61,6 +91,8 @@ fi
 # Create target directory if not exists
 log "Ensuring target directory exists: $TARGET_PATH"
 ssh $TARGET_HOST "mkdir -p $TARGET_PATH"
+
+confirm "Deploy to $TARGET_HOST:$TARGET_PATH?" || { log_warning "Deployment cancelled."; exit 0; }
 
 # Sync files
 log "Deploying files to: $TARGET_HOST:$TARGET_PATH"

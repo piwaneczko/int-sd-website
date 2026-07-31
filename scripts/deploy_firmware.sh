@@ -66,5 +66,4 @@ cat "$OTA_DIR/manifest.json"
 echo ""
 
 # Deploy site
-cd "$REPO_ROOT"
-bash deploy.sh
+bash "$SCRIPT_DIR/deploy.sh"

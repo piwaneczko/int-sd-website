@@ -97,8 +97,8 @@ npm run preview
 | `npm run dev` | Start dev server on http://localhost:3000 |
 | `npm run build` | Build files to `/dist` directory |
 | `npm run preview` | Preview built website |
-| `npm run deploy` | Deploy to Synology via SSH (Linux/Mac/WSL) |
-| `npm run deploy:win` | Deploy to Synology from Windows — runs `deploy.sh` inside WSL |
+| `npm run deploy` | Deploy to Synology via SSH (Linux/Mac/WSL) — `scripts/deploy.sh [-y]` |
+| `npm run release` | Bump version, tag, update `CHANGELOG.md`, then build & deploy — `scripts/release.sh [-y]` |
 | `npm run deploy:recipes` | Sync only `public/recipes.json` to Synology |
 | `npm run mint-changelog` | Refresh `src/data/mint-changelog.json` from `../mint/*/CHANGELOG.md` (see below) |
 
@@ -111,7 +111,7 @@ npm run preview
 2. `rsync` installed (in WSL, if deploying from Windows)
 
 ### Configuration
-Add entry to `~/.ssh/config` **inside WSL** (not Windows' own `~/.ssh/config` — `deploy.ps1` always runs `deploy.sh` inside WSL):
+Add entry to `~/.ssh/config` **inside WSL** (on Windows, run the deploy from a WSL shell — there is no separate Windows-native deploy path, to avoid two rsync implementations drifting apart):
 ```
 Host synology
     HostName your-synology-ip-or-domain
@@ -121,20 +121,38 @@ Host synology
 
 ### Run
 ```bash
-# Linux/Mac/WSL
 npm run deploy
-
-# Windows (delegates to WSL)
-npm run deploy:win
+# or directly:
+scripts/deploy.sh [-y]
 ```
 
-`deploy.sh` automatically:
+`scripts/deploy.sh` automatically:
 - builds the project
 - creates the destination directory
 - copies files via `rsync --delete` (removes files on the server that no longer exist locally — `public/ota/*` is excluded from deletion since it's gitignored and may not be present on every machine)
 - saves a log entry to `deploy.log`
 
-`deploy.ps1` just forwards to `deploy.sh` inside WSL — there is no separate Windows-native deploy path anymore, to avoid two rsync implementations drifting apart.
+It asks for confirmation before touching the server; pass `-y`/`--yes` to skip
+that prompt (used when called non-interactively, e.g. from `scripts/release.sh`).
+
+---
+
+## 🚀 Releases
+
+`scripts/release.sh` (`npm run release`) wraps `scripts/deploy.sh` with
+versioning: it bumps the `version` field in `package.json`, adds/updates the
+matching entry in `CHANGELOG.md`, commits, creates an annotated `vX.Y.Z` git
+tag, then builds & deploys and offers to push the commit + tag to `origin`.
+
+```bash
+npm run release
+# or directly:
+scripts/release.sh [-y]
+```
+
+It's interactive by default (prompts for the version and release notes).
+Pass `-y`/`--yes` to accept every confirmation and default (still aborts on a
+dirty working tree, an invalid version, or a build/deploy failure).
 
 ---
 
@@ -182,7 +200,7 @@ npm run mint-changelog:build  # parse them and write src/data/mint-changelog.jso
 npm run mint-changelog        # both steps together
 ```
 
-`deploy.sh` runs this automatically before building, and skips it (with a
+`scripts/deploy.sh` runs this automatically before building, and skips it (with a
 warning) if `../mint` isn't present on the machine. The parser
 (`scripts/mint-changelog/parse.mjs`) is a small, dependency-free parser
 tailored to these files' actual format, not a generic Keep a Changelog
