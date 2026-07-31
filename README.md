@@ -139,10 +139,16 @@ that prompt (used when called non-interactively, e.g. from `scripts/release.sh`)
 
 ## 🚀 Releases
 
-`scripts/release.sh` (`npm run release`) wraps `scripts/deploy.sh` with
-versioning: it bumps the `version` field in `package.json`, adds/updates the
-matching entry in `CHANGELOG.md`, commits, creates an annotated `vX.Y.Z` git
-tag, then builds & deploys and offers to push the commit + tag to `origin`.
+`scripts/release.sh` (`npm run release`) mirrors
+`../mint/firmware/scripts/release.sh`: the git tag is the version source of
+truth (suggested from `git describe --tags`), and a missing `CHANGELOG.md`
+entry for the target version is filled in by running
+`~/scripts/ollama-update-changelog.sh` (a local-Ollama changelog generator
+shared across repos — needs `curl`, `jq`, and an Ollama server reachable at
+`OLLAMA_URL`, default `http://localhost:11434`). It then keeps
+`package.json`'s `version` field in sync, commits, creates an annotated
+`vX.Y.Z` tag, builds & deploys via `scripts/deploy.sh`, and offers to push
+the commit + tag to `origin`.
 
 ```bash
 npm run release
@@ -150,9 +156,12 @@ npm run release
 scripts/release.sh [-y]
 ```
 
-It's interactive by default (prompts for the version and release notes).
-Pass `-y`/`--yes` to accept every confirmation and default (still aborts on a
-dirty working tree, an invalid version, or a build/deploy failure).
+It's interactive by default (prompts for the version, and for release notes
+if the changelog helper doesn't produce a one-liner). Pass `-y`/`--yes` to
+accept every confirmation and default, including in the changelog helper
+(still aborts outright on a dirty working tree, an invalid/existing version,
+a missing `CHANGELOG.md` entry the helper couldn't fill in, or a
+build/deploy failure).
 
 ---
 
