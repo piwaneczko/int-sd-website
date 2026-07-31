@@ -90,6 +90,7 @@ export function Footer() {
           <div className="flex items-center gap-6">
             <Link to="/privacy" className="text-deep-500 hover:text-primary text-sm">{f.privacy}</Link>
             <Link to="/terms"   className="text-deep-500 hover:text-primary text-sm">{f.terms}</Link>
+            <Link to="/privacy/mint" className="text-deep-500 hover:text-primary text-sm">{f.mintPrivacy}</Link>
           </div>
         </div>
       </div>

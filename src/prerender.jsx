@@ -23,6 +23,7 @@ const TITLES = {
   '/portfolio': 'Projekty | I.N.T. Software Development',
   '/contact': 'Kontakt | I.N.T. Software Development',
   '/privacy': 'Polityka prywatności | I.N.T. Software Development',
+  '/privacy/mint': 'Polityka prywatności — MINT | I.N.T. Software Development',
   '/terms': 'Regulamin | I.N.T. Software Development',
   '/cookbook': 'Cookbook | I.N.T. Software Development',
 }

@@ -12,6 +12,7 @@ import { PortfolioPage } from './pages/Portfolio'
 import { ContactPage } from './pages/Contact'
 import { CookbookPage } from './pages/Cookbook'
 import { PrivacyPage } from './pages/Privacy'
+import { MintPrivacyPage } from './pages/MintPrivacy'
 import { TermsPage } from './pages/Terms'
 import { MintChangelogPage } from './pages/MintChangelog'
 import './styles/tailwind.css'
@@ -36,6 +37,7 @@ export function AppShell() {
             <Route path="/contact" element={<ContactPage />} />
             <Route path="/cookbook" element={<CookbookPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/privacy/mint" element={<MintPrivacyPage />} />
             <Route path="/terms" element={<TermsPage />} />
           </Routes>
         </main>
