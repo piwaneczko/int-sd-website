@@ -3,7 +3,7 @@
 #
 # Interactive: prompts for the new version and a release-notes description.
 # Pass -y/--yes to accept every [Y/n] confirmation and default value without
-# prompting (propagated to ollama-update-changelog.sh and scripts/deploy.sh
+# prompting (propagated to ai-update-changelog.sh and scripts/deploy.sh
 # too) — still stops and fails outright on a real error (dirty tree, missing
 # CHANGELOG entry, build/deploy failure), it only skips the confirmations.
 #
@@ -34,7 +34,7 @@ done
 # --- config -----------------------------------------------------------
 REPO_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 GIT_REMOTE="origin"
-CHANGELOG_HELPER="$HOME/scripts/ollama-update-changelog.sh"
+CHANGELOG_HELPER="$HOME/scripts/ai-update-changelog.sh"
 
 # --- helpers ------------------------------------------------------------
 die()  { echo "✗ $*" >&2; exit 1; }
@@ -127,7 +127,7 @@ fi
 
 if [[ -n "$TAG_ONELINE" ]]; then
   echo
-  info "Suggested release notes (from ollama-update-changelog.sh):"
+  info "Suggested release notes (from ai-update-changelog.sh):"
   echo "  $TAG_ONELINE"
   confirm "Use this as release notes?" use_notes
   [[ "${use_notes:-y}" =~ ^[Yy]$ ]] && NOTES="$TAG_ONELINE"

@@ -15,7 +15,12 @@
 # The script:
 #   1. Copies the binary to public/ota/firmware.bin
 #   2. Updates public/ota/manifest.json with new version + size
-#   3. Deploys the whole site (npm run build && rsync)
+#   3. Publishes ONLY those two files directly to int-sd.net/ota/ — this is
+#      deliberately decoupled from the full site deploy (build + public
+#      changelog sanitization + full rsync), which now only happens via this
+#      repo's own `scripts/deploy.sh` (or `npm run deploy`), not as a side
+#      effect of a firmware release. OTA delivery is must-have on every
+#      firmware release; a full site/changelog redeploy is not.
 
 set -euo pipefail
 
@@ -65,5 +70,11 @@ echo "Manifest updated:"
 cat "$OTA_DIR/manifest.json"
 echo ""
 
-# Deploy site
-bash "$SCRIPT_DIR/deploy.sh"
+# Publish just the OTA files directly (mirrors the minimal `deploy:recipes`
+# pattern for public/recipes.json) — no build, no changelog, no full rsync.
+TARGET_HOST="synology"
+TARGET_PATH="/volume1/web"
+echo "Publishing OTA files to $TARGET_HOST:$TARGET_PATH/ota/ ..."
+ssh "$TARGET_HOST" "mkdir -p $TARGET_PATH/ota"
+rsync -avz "$OTA_DIR/" "$TARGET_HOST:$TARGET_PATH/ota/"
+echo "✓ OTA published: https://int-sd.net/ota/manifest.json"
