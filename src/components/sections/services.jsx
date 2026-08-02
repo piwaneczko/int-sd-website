@@ -35,6 +35,28 @@ export function Services() {
             </Card>
           ))}
         </div>
+
+        {/* Technologies */}
+        <div className="border-t border-deep-800/50 mt-20 pt-16">
+          <div className="text-center mb-10">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">{s.techTitle}</h3>
+            <p className="text-deep-400 max-w-2xl mx-auto text-sm">{s.techSubtitle}</p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {s.techGroups.map((group, i) => (
+              <div key={i} className="p-5 bg-deep-800/30 rounded-xl border border-deep-700/30">
+                <div className="text-xs uppercase tracking-wider text-primary mb-3">{group.label}</div>
+                <div className="flex flex-wrap gap-2">
+                  {group.items.map((item, j) => (
+                    <span key={j} className="text-xs text-deep-300 bg-deep-800/60 border border-deep-700/50 px-2.5 py-1 rounded">
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   )

@@ -31,6 +31,7 @@ export function Footer() {
       links: [
         { name: 'MINT', path: '/mint' },
         { name: t.mintChangelog.navLabel, path: '/mint/changelog' },
+        { name: f.mintPrivacy, path: '/privacy/mint' },
         { name: 'Cookbook', path: '/cookbook' },
       ],
     },
