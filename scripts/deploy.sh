@@ -132,6 +132,35 @@ log "Deploying files to: $TARGET_HOST:$TARGET_PATH"
 # uploaded, silently leaving the server's firmware.bin/manifest.json stale.
 rsync -avz --delete --exclude='.gitkeep' --filter='P /ota/' --filter='P /ota/**' "$BUILD_DIR/" "$TARGET_HOST:$TARGET_PATH/"
 
+# Drop the CDN's copy of the whole zone so it re-fetches from the freshly
+# synced origin. Purging everything (rather than just the changed paths) is
+# deliberate: the site is small, and it also evicts any copy the CDN grabbed
+# mid-upload — a request that hits an asset while rsync is still writing it
+# gets cached truncated for the full max-age (4 h at the time of writing).
+# Credentials are shared with scripts/deploy_firmware.sh. A failed purge only
+# warns: the files are already deployed at this point.
+if [[ -f "$HOME/.cloudflarerc" ]]; then
+    set -a; . "$HOME/.cloudflarerc"; set +a
+fi
+if [[ -n "${CF_ZONE_ID:-}" && -n "${CF_API_TOKEN:-}" ]]; then
+    log "Purging the CDN cache..."
+    PURGE_RESULT="$(curl -sS -X POST \
+        "https://api.cloudflare.com/client/v4/zones/${CF_ZONE_ID}/purge_cache" \
+        -H "Authorization: Bearer ${CF_API_TOKEN}" \
+        -H "Content-Type: application/json" \
+        --data '{"purge_everything":true}')" || PURGE_RESULT=''
+    if [[ "$PURGE_RESULT" == *'"success":true'* ]]; then
+        log "CDN cache purged."
+    else
+        log_warning "CDN purge did not report success — the public URL may serve"
+        log_warning "previous (or truncated) files for up to their max-age."
+        log_warning "Response: ${PURGE_RESULT:-<no response>}"
+    fi
+else
+    log_warning "CDN cache NOT purged: CF_ZONE_ID / CF_API_TOKEN are not set."
+    log_warning "Put them in ~/.cloudflarerc (see scripts/deploy_firmware.sh)."
+fi
+
 # Log deployment
 echo "Deployment completed at $(date)" >> "$LOG_FILE"
 
