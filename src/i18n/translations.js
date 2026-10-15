@@ -74,6 +74,9 @@ export const translations = {
         { caption: 'Wizualizacja orientacji' },
       ],
       appVideo: 'Obejrzyj film z działania aplikacji',
+      appStoreTitle: 'Pobierz aplikację',
+      appStoreText: 'Zeskanuj kod telefonem z Androidem albo kliknij przycisk, żeby otworzyć MINT w Google Play.',
+      appQrAlt: 'Kod QR: MINT w Google Play',
       connect: {
         title: 'Połącz czujnik MINT',
         intro: 'Zeskanowałeś kod z naklejki na czujniku. Aplikacja MINT połączy się z nim od razu.',
@@ -283,6 +286,9 @@ export const translations = {
         { caption: 'Orientation visualization' },
       ],
       appVideo: 'Watch the app in action',
+      appStoreTitle: 'Get the app',
+      appStoreText: 'Scan the code with an Android phone or click the button to open MINT on Google Play.',
+      appQrAlt: 'QR code: MINT on Google Play',
       connect: {
         title: 'Connect your MINT sensor',
         intro: 'You scanned the code on the sensor\'s sticker. The MINT app will connect to it right away.',
