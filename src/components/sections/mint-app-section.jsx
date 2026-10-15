@@ -1,7 +1,8 @@
 import React from 'react'
 import { Card } from '../ui/card'
-import { Bluetooth, Compass, Map, Activity, Box, UploadCloud } from 'lucide-react'
+import { Bluetooth, Compass, Map, Activity, Box, UploadCloud, PlayCircle } from 'lucide-react'
 import { useLanguage } from '../../contexts/LanguageContext'
+import { MINT_DEMO_VIDEO_URL } from '../../utils/mint-app'
 
 const icons = [
   <Bluetooth size={28} />,
@@ -17,9 +18,11 @@ const colors = [
 ]
 
 const screenshots = [
-  '/images/mint-app-scan.png',
-  '/images/mint-app-map.png',
-  '/images/mint-app-visualization.png',
+  '/images/mint-app-indoor-map.webp',
+  '/images/mint-app-satellite.webp',
+  '/images/mint-app-telemetry.webp',
+  '/images/mint-app-calibration.webp',
+  '/images/mint-app-visualization.webp',
 ]
 
 export function MintAppSection() {
@@ -49,10 +52,10 @@ export function MintAppSection() {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {m.appScreens.map((screen, index) => (
             <div key={index}>
-              <div className="aspect-[9/16] rounded-2xl overflow-hidden border border-deep-700/50 bg-deep-800/50">
+              <div className="aspect-[9/20] rounded-2xl overflow-hidden border border-deep-700/50 bg-deep-800/50">
                 <img
                   src={screenshots[index]}
                   alt={screen.caption}
@@ -66,6 +69,18 @@ export function MintAppSection() {
               <p className="text-center text-deep-400 text-xs mt-2">{screen.caption}</p>
             </div>
           ))}
+        </div>
+
+        <div className="mt-12 text-center">
+          <a
+            href={MINT_DEMO_VIDEO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg font-medium border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all duration-200"
+          >
+            <PlayCircle size={20} />
+            {m.appVideo}
+          </a>
         </div>
       </div>
     </section>

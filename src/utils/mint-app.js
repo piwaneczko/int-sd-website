@@ -10,6 +10,9 @@ export const MINT_APP_PACKAGE = 'net.intsd.mint'
 // The one place to change when the store listing moves or a second store appears.
 export const MINT_PLAY_URL = `https://play.google.com/store/apps/details?id=${MINT_APP_PACKAGE}`
 
+// A walk-through of the app, shown on the MINT page.
+export const MINT_DEMO_VIDEO_URL = 'https://youtu.be/kjlsYCT7qT0'
+
 const HEX12 = /^[0-9A-Fa-f]{12}$/
 
 // 'C28FA5991E67', 'c2:8f:a5:99:1e:67' or 'c2-8f-...' -> 'C28FA5991E67'; null if it

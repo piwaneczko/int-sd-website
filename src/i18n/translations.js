@@ -67,10 +67,13 @@ export const translations = {
         { title: 'Aktualizacje OTA', desc: 'Bezprzewodowa aktualizacja firmware urządzenia bezpośrednio z aplikacji.' },
       ],
       appScreens: [
-        { caption: 'Skanowanie i parowanie' },
-        { caption: 'Nawigacja i mapa' },
+        { caption: 'Mapa wnętrz' },
+        { caption: 'Widok satelitarny' },
+        { caption: 'Telemetria na żywo' },
+        { caption: 'Kalibracja' },
         { caption: 'Wizualizacja orientacji' },
       ],
+      appVideo: 'Obejrzyj film z działania aplikacji',
       connect: {
         title: 'Połącz czujnik MINT',
         intro: 'Zeskanowałeś kod z naklejki na czujniku. Aplikacja MINT połączy się z nim od razu.',
@@ -273,10 +276,13 @@ export const translations = {
         { title: 'OTA Updates', desc: 'Wireless firmware updates for the device directly from the app.' },
       ],
       appScreens: [
-        { caption: 'Scanning and pairing' },
-        { caption: 'Navigation and map' },
+        { caption: 'Indoor map' },
+        { caption: 'Satellite view' },
+        { caption: 'Live telemetry' },
+        { caption: 'Calibration' },
         { caption: 'Orientation visualization' },
       ],
+      appVideo: 'Watch the app in action',
       connect: {
         title: 'Connect your MINT sensor',
         intro: 'You scanned the code on the sensor\'s sticker. The MINT app will connect to it right away.',
