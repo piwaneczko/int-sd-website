@@ -71,6 +71,16 @@ export const translations = {
         { caption: 'Nawigacja i mapa' },
         { caption: 'Wizualizacja orientacji' },
       ],
+      connect: {
+        title: 'Połącz czujnik MINT',
+        intro: 'Zeskanowałeś kod z naklejki na czujniku. Aplikacja MINT połączy się z nim od razu.',
+        sensor: 'Czujnik:',
+        openApp: 'Otwórz w aplikacji',
+        googlePlay: 'Pobierz z Google Play',
+        iosSoon: 'Aplikacja na iPhone\'a jest w przygotowaniu. Na razie MINT działa na telefonach z Androidem.',
+        openOnPhone: 'Otwórz tę stronę na telefonie z Androidem (zeskanuj kod z naklejki aparatem telefonu), aby połączyć się z czujnikiem.',
+        pinHint: 'Przy pierwszym parowaniu Android poprosi o 6-cyfrowy PIN z naklejki.',
+      },
     },
     services: {
       title: 'Usługi',
@@ -267,6 +277,16 @@ export const translations = {
         { caption: 'Navigation and map' },
         { caption: 'Orientation visualization' },
       ],
+      connect: {
+        title: 'Connect your MINT sensor',
+        intro: 'You scanned the code on the sensor\'s sticker. The MINT app will connect to it right away.',
+        sensor: 'Sensor:',
+        openApp: 'Open in the app',
+        googlePlay: 'Get it on Google Play',
+        iosSoon: 'The iPhone app is in the works. For now MINT runs on Android phones.',
+        openOnPhone: 'Open this page on an Android phone (scan the sticker\'s code with the phone camera) to connect to the sensor.',
+        pinHint: 'The first time you pair, Android asks for the 6-digit PIN printed on the sticker.',
+      },
     },
     services: {
       title: 'Services',
