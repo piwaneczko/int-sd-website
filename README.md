@@ -123,10 +123,11 @@ Host synology
 ```bash
 npm run deploy
 # or directly:
-scripts/deploy.sh [-y]
+scripts/deploy.sh [-y] [-ncu]   # -h for the options
 ```
 
 `scripts/deploy.sh` automatically:
+- asks whether to refresh the public MINT changelog from `../mint` (see below); `-ncu`/`--no-changelog-update` skips it without asking
 - builds the project
 - creates the destination directory
 - copies files via `rsync --delete` (removes files on the server that no longer exist locally — `public/ota/*` is excluded from deletion since it's gitignored and may not be present on every machine)
@@ -210,8 +211,9 @@ npm run mint-changelog:build  # parse them and write src/data/mint-changelog.jso
 npm run mint-changelog        # both steps together
 ```
 
-`scripts/deploy.sh` runs this automatically before building, and skips it (with a
-warning) if `../mint` isn't present on the machine. The parser
+`scripts/deploy.sh` asks whether to run this before building (`-y` answers yes,
+`-ncu` skips it without asking), and skips it (with a warning) if `../mint` isn't
+present on the machine. The parser
 (`scripts/mint-changelog/parse.mjs`) is a small, dependency-free parser
 tailored to these files' actual format, not a generic Keep a Changelog
 parser — the source files use `---` separators and a title suffix on the

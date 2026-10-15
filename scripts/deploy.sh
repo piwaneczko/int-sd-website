@@ -2,18 +2,49 @@
 # Deploy script for I.N.T. Software Development
 # Deploy target: synology:/volume1/web
 #
-# Usage: scripts/deploy.sh [-y|--yes]
-# Pass -y/--yes to skip the pre-deploy confirmation (used when this script is
-# called non-interactively, e.g. from scripts/release.sh).
+# Usage: scripts/deploy.sh [-y|--yes] [-ncu|--no-changelog-update] [-h|--help]
+# Run it with -h for the options. -y skips every confirmation (used when this
+# script is called non-interactively, e.g. from scripts/release.sh).
 
 set -e
 
+usage() {
+  cat <<'EOF'
+Usage: scripts/deploy.sh [options]
+
+Builds the site and deploys it to the Synology (rsync), then purges the CDN.
+
+Before building it asks whether to refresh the public MINT changelog from the
+sibling ../mint checkout (sanitizes each repo's CHANGELOG.md into its
+CHANGELOG.public.md, then rebuilds src/data/mint-changelog.json). It also asks
+before touching the server.
+
+Options:
+  -y,   --yes                  Answer yes to every question: update the public
+                               changelog (unless -ncu is given) and deploy,
+                               without prompting. Used by scripts/release.sh.
+  -ncu, --no-changelog-update  Do not update the public changelog and do not ask
+                               about it; build with the existing
+                               src/data/mint-changelog.json. Works with or
+                               without -y.
+  -h,   --help                 Show this help and exit.
+
+Examples:
+  scripts/deploy.sh                # asks about the changelog, then about deploying
+  scripts/deploy.sh -y             # updates the changelog and deploys, no questions
+  scripts/deploy.sh -y -ncu        # deploys without touching the changelog, no questions
+EOF
+}
+
 # --- args -------------------------------------------------------------
 AUTO_YES=0
+UPDATE_CHANGELOG=ask # ask | no
 for arg in "$@"; do
   case "$arg" in
     -y|--yes) AUTO_YES=1 ;;
-    *) echo "Unknown argument: $arg" >&2; exit 1 ;;
+    -ncu|--no-changelog-update) UPDATE_CHANGELOG=no ;;
+    -h|--help) usage; exit 0 ;;
+    *) echo "Unknown argument: $arg" >&2; echo >&2; usage >&2; exit 1 ;;
   esac
 done
 
@@ -77,7 +108,11 @@ confirm() {
 # (src/data/mint-changelog.json). Never touches ../mint's CHANGELOG.md
 # itself — ai-sanitize-changelog.sh only ever writes CHANGELOG.public.md +
 # its cache file in that repo.
-if [ -d "../mint" ]; then
+if [ "$UPDATE_CHANGELOG" = no ]; then
+    log "Skipping the public changelog update (-ncu), using the existing src/data/mint-changelog.json"
+elif ! confirm "Update the public MINT changelog from ../mint?"; then
+    log "Skipping the public changelog update, using the existing src/data/mint-changelog.json"
+elif [ -d "../mint" ]; then
     SANITIZER="$HOME/scripts/ai-sanitize-changelog.sh"
     SANITIZER_ARGS=()
     [ "$AUTO_YES" -eq 1 ] && SANITIZER_ARGS+=(-y)
