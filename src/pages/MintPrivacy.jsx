@@ -33,7 +33,7 @@ const CONTENT = {
   pl: {
     back: '← Powrót do MINT',
     title: 'Polityka prywatności — MINT',
-    updated: 'Ostatnia aktualizacja: 31 lipca 2026',
+    updated: 'Ostatnia aktualizacja: 17 października 2026',
     intro: 'MINT („aplikacja") to aplikacja towarzysząca beaconowi inercyjnemu MINT — urządzeniu Bluetooth Low Energy. Ten dokument opisuje, co aplikacja robi z danymi. Jest krótki, ponieważ aplikacja robi niewiele: nie ma kont użytkowników, analityki, reklam ani śledzenia, a nic nie jest wysyłane na serwery obsługiwane przez nas poza sytuacją, gdy poprosisz aplikację o sprawdzenie aktualizacji oprogramowania układowego (firmware).',
     adminLabel: 'Administrator danych:',
     admin: 'I.N.T. Software Development - Paweł Iwaneczko',
@@ -52,18 +52,21 @@ const CONTENT = {
     locationP1: (
       <>
         Aplikacja wymaga dostępu do lokalizacji precyzyjnej (ACCESS_FINE_LOCATION)
-        oraz przybliżonej (ACCESS_COARSE_LOCATION). Lokalizacja jest wykorzystywana
-        wyłącznie, gdy aplikacja działa na pierwszym planie — aplikacja{' '}
-        <strong className="text-white">nie</strong> żąda dostępu do lokalizacji
-        w tle i nie może odczytać Twojej pozycji, gdy jest zamknięta.
+        oraz przybliżonej (ACCESS_COARSE_LOCATION). Lokalizacja jest odczytywana,
+        gdy aplikacja jest na ekranie oraz podczas nagrywania spaceru. W trakcie
+        spaceru aplikacja uruchamia usługę pierwszoplanową z widocznym
+        powiadomieniem (FOREGROUND_SERVICE_LOCATION, POST_NOTIFICATIONS), która
+        podtrzymuje odczyt pozycji.
       </>
     ),
+    locationBackground: 'Aplikacja może też poprosić o lokalizację „zawsze” (ACCESS_BACKGROUND_LOCATION) — raz na spacer i wyłącznie po Twojej wyraźnej akcji, nigdy przy uruchomieniu. Służy to tylko temu, by trwający spacer nie został przerwany, gdy Android zrestartuje usługę lub aplikacja nie jest widoczna. Możesz odmówić — spacer będzie wtedy trwał dalej w ramach usługi pierwszoplanowej. Aplikacja nie odczytuje Twojej pozycji, gdy żaden spacer nie trwa, a aplikacja jest zamknięta.',
     locationP2: 'Lokalizacja jest wykorzystywana do:',
     locationBullets: [
       'wyśrodkowania mapy na Twojej pozycji i jej wyświetlenia;',
       'powiązania sesji nawigacji z rzeczywistym punktem startowym;',
       'pobrania deklinacji magnetycznej i lokalnej grawitacji dla Twojej pozycji oraz zapisania ich w podłączonym beaconie, aby skorygować jego kurs względem miejsca, w którym się znajdujesz;',
       'pobrania obrysu budynku i planu wnętrza wokół wybranego punktu;',
+      'sprawdzenia wysokości terenu wzdłuż Twojej trasy, aby odróżnić schody i zbocza od chodzenia po płaskim;',
       'opcjonalnego zapisania pozycji w pliku logu diagnostycznego, gdy włączysz logowanie.',
     ],
     bluetoothSub: 'Bluetooth',
@@ -80,6 +83,8 @@ const CONTENT = {
       { service: 'Esri World Imagery', operator: 'Esri', sent: 'Współrzędne kafelków mapy dla wyświetlanego obszaru', why: 'Widok satelitarny, po jego włączeniu' },
       { service: 'Overpass API', operator: 'Overpass API (overpass-api.de)', sent: 'Obszar (bounding box) wokół interesującego miejsca', why: 'Obrysy budynków i plany wnętrz' },
       { service: 'Nominatim', operator: 'OpenStreetMap Foundation', sent: 'Tekst wpisany w pole wyszukiwania na mapie', why: 'Wyszukiwanie miejsca po nazwie' },
+      { service: 'Usługa wysokościowa GUGiK NMT', operator: 'Główny Urząd Geodezji i Kartografii', sent: 'Współrzędne punktów trasy w Polsce, zaokrąglone do komórki ok. 5 m', why: 'Wysokość terenu (numeryczny model terenu)' },
+      { service: 'Kafelki terenu (Terrarium)', operator: 'Amazon Web Services (publiczny zbiór elevation-tiles-prod)', sent: 'Numery kafelków obejmujących trasę poza Polską', why: 'Wysokość terenu (numeryczny model terenu)' },
       { service: 'Kalkulator geomagnetyczny NOAA NCEI', operator: 'Amerykański Narodowy Urząd ds. Oceanów i Atmosfery (NOAA)', sent: 'Szerokość i długość geograficzna', why: 'Deklinacja magnetyczna dla Twojej pozycji' },
       { service: 'int-sd.net', operator: 'I.N.T. Software Development - Paweł Iwaneczko', sent: 'Nic o Tobie; zapytanie o manifest oraz obraz oprogramowania układowego (firmware)', why: 'Sprawdzanie i pobieranie aktualizacji oprogramowania beacona' },
     ],
@@ -115,7 +120,7 @@ const CONTENT = {
   en: {
     back: '← Back to MINT',
     title: 'Privacy Policy — MINT',
-    updated: 'Last updated: 2026-07-31',
+    updated: 'Last updated: 2026-10-17',
     intro: 'MINT ("the app") is a companion application for the MINT inertial-navigation beacon, a Bluetooth Low Energy device. This policy describes what the app does with data. It is short because the app does little: there are no user accounts, no analytics, no advertising, no tracking, and nothing is sent to servers operated by us except when you ask the app to check for a firmware update.',
     adminLabel: 'Publisher:',
     admin: 'I.N.T. Software Development - Paweł Iwaneczko',
@@ -134,19 +139,21 @@ const CONTENT = {
     locationP1: (
       <>
         The app requests precise location (ACCESS_FINE_LOCATION) and
-        approximate location (ACCESS_COARSE_LOCATION). Location is used only
-        while the app is in the foreground — the app does{' '}
-        <strong className="text-white">not</strong> request
-        background-location access and cannot read your position when it is
-        closed.
+        approximate location (ACCESS_COARSE_LOCATION). Location is read while
+        the app is on screen and while you are recording a walk. During a walk
+        the app runs a foreground service with a visible notification
+        (FOREGROUND_SERVICE_LOCATION, POST_NOTIFICATIONS) that keeps position
+        updates coming.
       </>
     ),
+    locationBackground: 'The app can also ask for "Allow all the time" location (ACCESS_BACKGROUND_LOCATION), once per walk and only after an explicit action of yours, never at launch. It is used only so a walk in progress is not cut short if Android restarts the service or the app is not visible. You may refuse it — the walk then continues under the foreground service. The app does not read your position when no walk is in progress and the app is closed.',
     locationP2: 'Location is used to:',
     locationBullets: [
       'centre the map on you and draw your position;',
       'anchor a navigation session to a real-world starting point;',
       'fetch the magnetic declination and local gravity for your position and write them to the connected beacon, so its heading is corrected for where you are;',
       'fetch the building outline and indoor plan around a chosen point;',
+      'look up the terrain height along your route, to tell stairs and slopes from level walking;',
       'optionally record position into a diagnostic log file, when you turn logging on.',
     ],
     bluetoothSub: 'Bluetooth',
@@ -163,6 +170,8 @@ const CONTENT = {
       { service: 'Esri World Imagery', operator: 'Esri', sent: 'Map tile coordinates for the area shown', why: 'Satellite view, when you enable it' },
       { service: 'Overpass API', operator: 'Overpass API (overpass-api.de)', sent: 'A bounding box around the area of interest', why: 'Building outlines and indoor floor plans' },
       { service: 'Nominatim', operator: 'OpenStreetMap Foundation', sent: 'The text you type into the map search box', why: 'Finding a place by name' },
+      { service: 'GUGiK NMT elevation service', operator: 'Główny Urząd Geodezji i Kartografii (Poland)', sent: 'Coordinates of points along your route in Poland, rounded to a cell of about 5 m', why: 'Terrain height (digital elevation model)' },
+      { service: 'Terrain tiles (Terrarium)', operator: 'Amazon Web Services (public dataset elevation-tiles-prod)', sent: 'Tile numbers covering your route outside Poland', why: 'Terrain height (digital elevation model)' },
       { service: 'NOAA NCEI geomagnetic calculator', operator: 'US National Oceanic and Atmospheric Administration', sent: 'Latitude and longitude', why: 'Magnetic declination for your position' },
       { service: 'int-sd.net', operator: 'I.N.T. Software Development - Paweł Iwaneczko', sent: 'Nothing about you; a request for the firmware manifest and firmware image', why: 'Checking for and downloading beacon firmware updates' },
     ],
@@ -233,6 +242,7 @@ export function MintPrivacyPage() {
 
             <SubHeading>{c.locationSub}</SubHeading>
             <p className="text-deep-400 text-sm leading-relaxed mb-2">{c.locationP1}</p>
+            <p className="text-deep-400 text-sm leading-relaxed mb-2">{c.locationBackground}</p>
             <p className="text-deep-400 text-sm leading-relaxed mb-2">{c.locationP2}</p>
             <Bullets items={c.locationBullets} />
 
