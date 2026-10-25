@@ -1,0 +1,14 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "net.intsd.mint",
+      "sha256_cert_fingerprints": [
+        "63:78:B0:48:E4:10:BB:D2:BD:16:DA:A4:E0:1A:5B:A6:9C:09:A9:ED:88:AB:EC:36:9F:9D:B0:0C:21:43:8E:80",
+        "CA:18:5A:93:5C:2E:53:A6:82:1D:8E:9B:02:4A:B2:2E:36:71:24:C1:B1:55:40:81:D9:69:ED:6D:F1:9D:72:E5",
+        "DD:12:DF:B6:60:C5:21:50:E0:5A:19:67:1C:68:53:EF:EF:10:C6:30:99:8C:67:47:BE:44:9C:5A:22:54:46:90"
+      ]
+    }
+  }
+]

@@ -1,7 +1,5 @@
 import React from 'react'
-import { AlertTriangle } from 'lucide-react'
 import { Section, Container } from '../components/layout/container'
-import { Card } from '../components/ui/card'
 import { useLanguage } from '../contexts/LanguageContext'
 
 export function TermsPage() {
@@ -13,11 +11,6 @@ export function TermsPage() {
       <Container maxWidth="md">
         <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">{l.terms.title}</h1>
         <p className="text-deep-500 text-sm mb-8">{l.updated}</p>
-
-        <Card className="flex items-start gap-3 mb-10 border-yellow-500/30 bg-yellow-500/5" hoverEffect={false}>
-          <AlertTriangle className="text-yellow-400 shrink-0 mt-0.5" size={20} />
-          <p className="text-yellow-200/90 text-sm">{l.draftBanner}</p>
-        </Card>
 
         <div className="space-y-8">
           {l.terms.sections.map((section, i) => (

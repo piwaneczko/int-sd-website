@@ -14,12 +14,17 @@ function buildMedia(m) {
       { src: '/images/mint-hw-v1-render.png', label: m.mediaRender },
       { src: '/images/mint-hw-v1-photo.webp', label: m.mediaPhoto },
     ],
-    // Obudowa v1 – render (FreeCAD) + zdjęcie wyprodukowanej obudowy
+    // Obudowa v1 – render jako pierwszy, zdjęcie wyprodukowanej obudowy jako drugie
     [
-      { src: '/images/mint-case-v1-render.png', label: m.mediaRender, fit: 'contain'  },
+      { src: '/images/mint-case-v1-render.png', label: m.mediaRender, fit: 'contain' },
       { src: '/images/mint-case-v1-photo.webp', label: m.mediaPhoto },
     ],
-    // Firmware v1 (w trakcie) – zrzut z VSCode z debugiem RTT
+    // Obudowa v2 – render gotowy, zdjęcie w druku (placeholder do podmiany po otrzymaniu)
+    [
+      { src: '/images/mint-case-v2-render.png', label: m.mediaRender, fit: 'contain' },
+      { src: '/images/mint-case-v2-photo.png', label: m.mediaPhoto },
+    ],
+    // Firmware v1 (w trakcie) – podgląd diagnostyczny
     [
       { src: '/images/mint-firmware-v1-rtt-debug.png', label: m.mediaDebug, wide: true, fit: 'contain' },
     ],

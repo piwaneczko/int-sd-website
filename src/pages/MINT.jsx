@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { MINTSection } from '../components/sections/mint-section'
 import { MintTimelineSection } from '../components/sections/mint-timeline-section'
 import { MintAppSection } from '../components/sections/mint-app-section'
+import { MintConnectCard } from '../components/sections/mint-connect-card'
 import { Features } from '../components/sections/features'
 import { Container, Section } from '../components/layout/container'
 import { useLanguage } from '../contexts/LanguageContext'
@@ -15,6 +16,7 @@ export function MINTPage() {
     <div>
       <Section padding="pt-32 pb-20" className="bg-gradient-to-b from-deep-900 via-tech-900 to-deep-900">
         <Container>
+          <MintConnectCard />
           <div className="text-center mb-16">
             <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">MINT</h1>
             <p className="text-primary text-lg mb-4">Micro Inertial Navigation Tracker</p>
